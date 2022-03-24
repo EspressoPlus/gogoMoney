@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Movie Library</title>
+<title>gogo money</title>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/styleBody.css">
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/styleForm.css">
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/styleTable.css">
