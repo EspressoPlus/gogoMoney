@@ -16,15 +16,39 @@ public class ControllerSOAP {
 	@Autowired
 	private UserService userService;
 	
-	// index.jsp
+	// landingPage.jsp
+	// landing page for user login / create acct
+	// login -> /displaySummary
+	// create -> /createAcct
 	@RequestMapping("/")
-	public String indexPage(Model m) {
+	public String landingPage(Model m) {
 		List<String> users = userService.getUsers();
-		m.addAttribute("users", users);
-		System.out.println("### ControllerSOAP users: " + users);
-		return "index";
+		m.addAttribute("users", users);  // needed if 
+		//System.out.println("### ControllerSOAP users: " + users);
+		return "landingPage";
 		// submit action is /showTransactions
 	}
+	
+	// createAccount.jsp
+	// -> displaySummary
+	@RequestMapping("/createAccount")
+	public String createAccount() {
+		return "createAccount.jsp";
+	}
+	
+	// displaySummary.jsp
+	@RequestMapping("/displaySummary")
+	public String displaySummary() {
+		return "displaySummary.jsp";
+	}
+	
+	// displayTransactions.jsp
+	@RequestMapping("/displayTransactions")
+	public String displayTransactions() {
+		return "displayTransactions.jsp";
+	}
+
+	
 	
 }
 
