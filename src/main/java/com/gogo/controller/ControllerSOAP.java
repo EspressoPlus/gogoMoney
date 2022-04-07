@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.gogo.entity.User;
+import com.gogo.service.MoneyService;
 import com.gogo.service.UserService;
 
 @Controller
@@ -15,6 +16,7 @@ public class ControllerSOAP {
 	
 	@Autowired
 	private UserService userService;
+	private MoneyService moneyService;
 	
 	// landingPage.jsp
 	// landing page for user login / create acct
