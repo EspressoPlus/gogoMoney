@@ -8,6 +8,8 @@ import com.gogo.entity.User;
 
 public interface UserService {
 
-	public List<String> getUsers();
+	public List<User> getUsers();
+
+	public User getUser(int id);
 
 }

@@ -1,25 +1,29 @@
 package com.gogo.service;
 
-import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import com.gogo.dao.UserDAO;
 import com.gogo.entity.User;
 
 @Service
 public class UserServiceImpl implements UserService {
-
+	@Autowired
+	private UserDAO userDAO;
+	
 	@Override
-	public List<String> getUsers() {
-		// TODO Auto-generated method stub
-		List<String> users = new ArrayList<>();
-		users.add("user33");
-		users.add("user02");
-		users.add("user03");
-		//return null;
-		return users;
+	@Transactional
+	public List<User> getUsers() {
+		return userDAO.getUsers();
 	}
-
-
+	
+	
+	@Override
+	@Transactional
+	public User getUser(int id) {
+		return userDAO.getUser(id);
+	}
 }
