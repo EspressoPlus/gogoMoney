@@ -30,6 +30,14 @@ public class ControllerSOAP {
 		return "landingPage";
 		// submit action is /showTransactions
 	}
+	@RequestMapping("/validate")
+	public String validate() {
+		//List<User> users = userService.getUsers();
+		//m.addAttribute("users", users);  // needed if 
+		//System.out.println("### ControllerSOAP users: " + users);
+		return "validate";
+		// submit action is /showTransactions
+	}
 	
 	// createAccount.jsp
 	// -> displaySummary
