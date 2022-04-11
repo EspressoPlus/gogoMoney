@@ -1,0 +1,60 @@
+
+
+body {
+	margin:10px auto;
+	/* max-width: 200px; */
+	padding: 20px 12px 10px 50px;
+	font: 16px "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+}
+
+
+input[type=submit] {
+  	-moz-box-shadow: inset 0px 1px 0px 0px #45D6D6;
+	-webkit-box-shadow: inset 0px 1px 0px 0px #45D6D6;
+	box-shadow: inset 0px 1px 0px 0px #45D6D6;
+	background-color: #2CBBBB;
+	border: 1px solid #27A0A0;
+	display: inline-block;
+	cursor: pointer;
+	color: #FFFFFF;
+	font-family: 'Open Sans Condensed', sans-serif;
+	font-size: 14px;
+	padding: 8px 18px;
+	text-decoration: none;
+	text-transform: uppercase;
+}
+
+p.context {
+	color: #CCCCCC;
+	font-size: 14px;
+}
+
+/* make button looke like link */
+/* https://stackoverflow.com/questions/1367409/how-to-make-button-look-like-a-link */
+button.link {
+	font-size: 18px;
+  	background: none!important;
+  	border: none;
+  	padding: 0!important;
+  	/*optional*/
+  	/* font-family: arial, sans-serif; */
+  	/*input has OS specific font-family*/
+  	color: #069;
+  	text-decoration: underline;
+  	cursor: pointer;
+}
+
+optgroup { font-size: 16px; }
+
+
+
+  /* background: #4B99AD;
+  border: none;
+  color: #fff;
+  padding: 8px 15px 8px 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  display: inline-table;
+  font-size: 16px; */
+  
