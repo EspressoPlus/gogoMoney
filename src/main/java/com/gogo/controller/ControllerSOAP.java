@@ -43,21 +43,26 @@ public class ControllerSOAP {
 	// -> displaySummary
 	@RequestMapping("/createAccount")
 	public String createAccount() {
-		return "createAccount.jsp";
+		return "createAccount";
 	}
 	
 	// displaySummary.jsp
 	@RequestMapping("/displaySummary")
 	public String displaySummary() {
-		return "displaySummary.jsp";
+		return "displaySummary";
 	}
 	
 	// displayTransactions.jsp
 	@RequestMapping("/displayTransactions")
 	public String displayTransactions() {
-		return "displayTransactions.jsp";
+		return "displayTransactions";
 	}
 	
+	// populateFinances.jsp
+		@RequestMapping("/populateFinances")
+		public String populateFinances() {
+			return "populateFinances";
+		}
 	
 	// THIS COMMENT IS TO PRACTICE MY GITHUB PUSH
 
