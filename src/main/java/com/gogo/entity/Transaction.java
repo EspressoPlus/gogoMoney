@@ -1,91 +1,105 @@
-package com.gogo.entity;
+package src.main.java.com.gogo.entity;
 
-//import java.sql.Date;
-import java.sql.Timestamp; // https://www.baeldung.com/hibernate-date-time
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+
 
 @Entity
 @Table(name="transaction")
 public class Transaction {
-
-	@Id
+	
+	@Id // primary key field is "id"
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="id")
-	private int id;
+	@Column(name="transaction_id")
+	private int transaction_id;
 	
-	@Column(name="date")
-	private Timestamp txDate; // switched from LocalDateTime
-	
-	// ############################
-	//     Transaction >-- User 
-	// ############################
-	// cascade: include all except REMOVE so that a checkout record can be removed wo removing *user*
-	@ManyToOne(cascade={CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH}) 
+	@ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
 	@JoinColumn(name="user_id")
-	private User user;
+	private User user_id;
 	
-	// ############################
-	//     Transaction >-- Money 
-	// ############################
-	// cascade: include all except REMOVE so that a checkout record can be removed wo removing *movie*
-	@ManyToOne(cascade={CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH}) 
-	@JoinColumn(name="moneyinfo_id")
-	private Money money;
+	@OneToMany(mappedBy="income", fetch=FetchType.EAGER, cascade = CascadeType.ALL)
+	private List<Income> income = new ArrayList<Income>();
 	
-	// constructors
-	public Transaction() {}
-	
-	public Transaction(User user, Money movie, Timestamp dateOut /*, Timestamp dateIn*/) {
-		super();
-		this.user = user;
-		this.money = money;
-		this.txDate = txDate;
+	@OneToMany(mappedBy="outcome", fetch=FetchType.EAGER, cascade = CascadeType.ALL)
+	private List<Outcome> outcome = new ArrayList<Outcome>();
+
+	public int getTransaction_id() {
+		return transaction_id;
 	}
 
-	// getters + setters
-	public int getId() {
-		return id;
+	public void setTransaction_id(int transaction_id) {
+		this.transaction_id = transaction_id;
 	}
-	public void setId(int id) {
-		this.id = id;
+
+	public User getUser_id() {
+		return user_id;
 	}
-	public Timestamp getTDate() {
-		return txDate;
+
+	public void setUser_id(User user_id) {
+		this.user_id = user_id;
 	}
-	public void setTxDate(Timestamp dateOut) {
-		this.txDate = txDate;
+	
+	public void add(Income incomes)
+	{
+		income.add(incomes);
+		incomes.setTransactions(this);
 	}
-	public User getUser() {
-		return user;
+	
+	public void remove(Income incomes)
+	{
+		income.remove(incomes);
 	}
-	public void setUser(User user) {
-		this.user = user;
+	
+	public void add(Outcome outcomes)
+	{
+		outcome.add(outcomes);
+		outcomes.setTransactions(this);
 	}
-	public Money getMoney() {
-		return money;
+	
+	public void remove(Outcome outcomes)
+	{
+		outcome.remove(outcomes);
 	}
-	public void setMoney(Money money) {
-		this.money = money;
+
+	public List<Income> getIncome_id() {
+		return income;
+	}
+
+	public void setIncome_id(List<Income> income_id) {
+		this.income = income_id;
+	}
+
+	public List<Outcome> getOutcome_id() {
+		return outcome;
+	}
+
+	public void setOutcome_id(List<Outcome> outcome_id) {
+		this.outcome = outcome_id;
+	}
+
+	public Transaction(int transaction_id, User user_id, List<Income> income_id, List<Outcome> outcome_id) {
+		super();
+		this.transaction_id = transaction_id;
+		this.user_id = user_id;
+		this.income = income_id;
+		this.outcome = outcome_id;
 	}
 
 	@Override
 	public String toString() {
-		return "Transaction [id=" + id + ", txDate=" + txDate + "]";
+		return "Transaction [user_id=" + user_id + ", income_id=" + income + ", outcome_id=" + outcome + "]";
 	}
-	
-	
 }
-
-
-
-
-
