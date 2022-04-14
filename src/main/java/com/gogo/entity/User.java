@@ -26,12 +26,14 @@ public class User {
 	private String user_last_name;
 	@Column(name="email")
 	private String email;
-	@Column(name="username")
-	private String username;
+	//@Column(name="username")
+	//private String username; // NO variable  username in the database
 	@Column(name="password")
 	private String password;
 	@Column(name="start_balance")
 	private double start_balance;
+	@Column(name="amout_to_save") // LEAVE amout. It is a typo but the database is also a typo.
+	private double amount_to_save;
 	
 	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
 	private List<Income> incomes = new ArrayList<Income>();
@@ -40,14 +42,14 @@ public class User {
 	private List<Outcome> outcomes = new ArrayList<Outcome>();
 	
 	public User() {}
-	public User(String first_name, String last_name, String email, String username, String password,
-			double user_balance) {
+	public User(String first_name, String last_name, String email, String password,
+			double start_balance, double amount_to_save) {
 		this.user_first_name = first_name;
 		this.user_last_name = last_name;
 		this.email = email;
-		this.username = username;
 		this.password = password;
-		this.start_balance = user_balance;
+		this.start_balance = start_balance;
+		this.amount_to_save = amount_to_save;
 	}
 	
 	public int getUser_id() {
@@ -82,13 +84,6 @@ public class User {
 		this.email = email;
 	}
 	
-	public String getUsername() {
-		return username;
-	}
-	
-	public void setUsername(String username) {
-		this.username = username;
-	}
 	
 	public String getPassword() {
 		return password;
@@ -113,11 +108,25 @@ public class User {
 	public List<Income> getIncomes() {
 		return incomes;
 	}
-	
+	public double getAmount_to_save() {
+		return amount_to_save;
+	}
+	public void setAmount_to_save(double amount_to_save) {
+		this.amount_to_save = amount_to_save;
+	}
+	public void setIncomes(List<Income> incomes) {
+		this.incomes = incomes;
+	}
+	public void setOutcomes(List<Outcome> outcomes) {
+		this.outcomes = outcomes;
+	}
 	@Override
 	public String toString() {
-		return "User [user_id=" + user_id + ", first_name=" + user_first_name + ", last_name=" + user_last_name + ", email="
-				+ email + ", username=" + username + ", password=" + password + ", user_balance=" + start_balance + "]";
+		return "User [user_id=" + user_id + ", user_first_name=" + user_first_name + ", user_last_name="
+				+ user_last_name + ", email=" + email + ", password=" + password + ", start_balance=" + start_balance
+				+ ", amount_to_save=" + amount_to_save + "]";
 	}
+	
+
 	
 }

@@ -144,7 +144,7 @@ public class Outcome {
 		this.user = user;
 	}
 	
-	public Category getCetegory() {
+	public Category getCategory() {
 		return category_id;
 	}
 	
