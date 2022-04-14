@@ -10,5 +10,10 @@ public interface UserDAO {
 	
 	public User getUser(int id);
 	
+	public void saveUser(User theUser);
+	
+	public void deleteUser(int id);
+	
+	
 
 }
