@@ -3,7 +3,7 @@ package com.gogo.service;
 
 import java.util.List;
 
-import com.gogo.entity.Transaction;
+
 import com.gogo.entity.User;
 
 public interface UserService {

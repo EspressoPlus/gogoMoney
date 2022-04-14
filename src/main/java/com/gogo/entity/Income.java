@@ -46,11 +46,11 @@ public class Income {
 	@ManyToOne(cascade={CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
 	@JoinColumn(name="category_id")
 	@JsonIgnore
-	private Category category;
+	private Category category_id;
 	
 	public Income() {}
 	public Income(String name, double amount, String reccuring, String reccur_interval, int reccur_day,
-			int reccur_count, Date transaction_date, Date entry_date, User user, Category category) {
+			int reccur_count, Date transaction_date, Date entry_date, User user, Category category_id) {
 		super();
 		this.name = name;
 		this.amount = amount;
@@ -61,7 +61,7 @@ public class Income {
 		this.transaction_date = transaction_date;
 		this.entry_date = entry_date;
 		this.user = user;
-		this.category = category;
+		this.category_id = category_id;
 	}
 	
 	public int getOutcome_id() {
@@ -145,11 +145,11 @@ public class Income {
 	}
 	
 	public Category getCategory() {
-		return category;
+		return category_id;
 	}
 	
 	public void setCategory(Category category) {
-		this.category = category;
+		this.category_id = category;
 	}
 	
 	@Override
@@ -157,7 +157,7 @@ public class Income {
 		return "Income [income_id=" + income_id + ", name=" + name + ", amount=" + amount + ", reccuring=" + reccuring
 				+ ", reccur_interval=" + reccur_interval + ", reccur_day=" + reccur_day + ", reccur_count="
 				+ reccur_count + ", transaction_date=" + transaction_date + ", entry_date=" + entry_date + ", user="
-				+ user + ", catagory=" + category + "]";
+				+ user + ", catagory=" + category_id + "]";
 	}
 	
 }

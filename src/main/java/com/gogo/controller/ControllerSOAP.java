@@ -16,6 +16,7 @@ public class ControllerSOAP {
 	
 	@Autowired
 	private UserService userService;
+	@Autowired
 	private MoneyService moneyService;
 	
 	// landingPage.jsp

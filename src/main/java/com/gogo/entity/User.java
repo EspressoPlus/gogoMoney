@@ -33,10 +33,10 @@ public class User {
 	@Column(name="start_balance")
 	private double start_balance;
 	
-	@OneToMany(mappedBy = "user_id", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
 	private List<Income> incomes = new ArrayList<Income>();
 	
-	@OneToMany(mappedBy = "user_id", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
 	private List<Outcome> outcomes = new ArrayList<Outcome>();
 	
 	public User() {}
