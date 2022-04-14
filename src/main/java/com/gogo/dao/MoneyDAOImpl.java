@@ -37,7 +37,8 @@ public class MoneyDAOImpl implements MoneyDAO {
 	public List<Outcome> getOutcomes() {
 		Session session = sessionFactory.getCurrentSession();
 		Query<Outcome> query = session.createQuery("From Outcome", Outcome.class);
-		
+		//System.out.println(query.getResultList());
+		//System.out.println("GetOutcomes");
 		return query.getResultList();
 	}
 
