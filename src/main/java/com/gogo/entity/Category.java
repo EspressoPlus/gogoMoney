@@ -12,6 +12,9 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.gogo.entity.Income;
+import com.gogo.entity.Outcome;
+
 @Entity
 @Table(name="category")
 public class Category {
