@@ -36,8 +36,16 @@ public class MoneyDAOImpl implements MoneyDAO {
 	@Override
 	public List<Outcome> getOutcomes() {
 		Session session = sessionFactory.getCurrentSession();
-		Query<Outcome> query = session.createQuery("From Outcome", Outcome.class);
-		
+		Query<Outcome> query = session.createQuery("from Outcome", Outcome.class);
+		//Integer id = 1;
+		//String n = "Rent";
+		//String r = "TRUE";
+		//Query<Outcome> query = session.createQuery("from Outcome o where o.user_id = " + id, Outcome.class);
+		//Query<Outcome> query = session.createQuery("from Outcome o where o.recurring = " + r, Outcome.class);
+		//System.out.println("###BORT###" + query.getResultList());
+		//System.out.println("###BORT###" + query.toString());
+		//System.out.println("###BORT###" + query.getNamedParameters());
+		//System.out.println("###BORT###" + query.getQueryString());
 		return query.getResultList();
 	}
 

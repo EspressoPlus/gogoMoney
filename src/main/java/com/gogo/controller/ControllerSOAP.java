@@ -7,6 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.gogo.entity.Income;
+import com.gogo.entity.Outcome;
 import com.gogo.entity.User;
 import com.gogo.service.MoneyService;
 import com.gogo.service.UserService;
@@ -55,7 +57,13 @@ public class ControllerSOAP {
 	
 	// displayTransactions.jsp
 	@RequestMapping("/displayTransactions")
-	public String displayTransactions() {
+	public String displayTransactions(Model m) {
+		List<Outcome> outcomes = moneyService.getOutcomes();
+		m.addAttribute("outcomes", outcomes);
+		//System.out.println("### -> " + outcomes.get(0));
+		System.out.println("### -> " + outcomes);
+		List<Income> incomes = moneyService.getIncomes();
+		m.addAttribute("incomes", incomes);
 		return "displayTransactions";
 	}
 	

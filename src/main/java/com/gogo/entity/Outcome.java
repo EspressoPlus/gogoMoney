@@ -15,7 +15,7 @@ import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-@Table(name="Outcome")
+@Table(name="outcome")
 public class Outcome {
 	
 	@Id
@@ -26,14 +26,18 @@ public class Outcome {
 	private String name;
 	@Column(name="amount")
 	private double amount;
-	@Column(name="reccuring")
-	private String reccuring;
-	@Column(name="reccur_interval")
-	private String reccur_interval;
-	@Column(name="reccur_day")
-	private int reccur_day;
-	@Column(name="reccur_count")
-	private int reccur_count;
+	
+//	@Column(name="user_id", insert="false", update="false")
+//	private int user_id;
+
+	@Column(name="recurring")
+	private String recurring;
+	@Column(name="recur_interval")
+	private String recur_interval;
+	@Column(name="recurr_day")
+	private int recurr_day;
+	@Column(name="recurr_count")
+	private int recurr_count;
 	@Column(name="transaction_date")
 	private Date transaction_date;
 	@Column(name="entry_date")
@@ -49,15 +53,15 @@ public class Outcome {
 	private Category category_id;
 	
 	public Outcome() {}
-	public Outcome(String name, double amount, String reccuring, String reccur_interval, int reccur_day,
-			int reccur_count, Date transaction_date, Date entry_date, User user, Category category_id) {
+	public Outcome(String name, double amount, String recurring, String recur_interval, int recurr_day,
+			int recurr_count, Date transaction_date, Date entry_date, User user, Category category_id) {
 		super();
 		this.name = name;
 		this.amount = amount;
-		this.reccuring = reccuring;
-		this.reccur_interval = reccur_interval;
-		this.reccur_day = reccur_day;
-		this.reccur_count = reccur_count;
+		this.recurring = recurring;
+		this.recur_interval = recur_interval;
+		this.recurr_day = recurr_day;
+		this.recurr_count = recurr_count;
 		this.transaction_date = transaction_date;
 		this.entry_date = entry_date;
 		this.user = user;
@@ -88,36 +92,36 @@ public class Outcome {
 		this.amount = amount;
 	}
 	
-	public String getReccuring() {
-		return reccuring;
+	public String getRecurring() {
+		return recurring;
 	}
 	
-	public void setReccuring(String reccuring) {
-		this.reccuring = reccuring;
+	public void setRecurring(String recurring) {
+		this.recurring = recurring;
 	}
 	
-	public String getReccur_interval() {
-		return reccur_interval;
+	public String getRecur_interval() {
+		return recur_interval;
 	}
 	
-	public void setReccur_interval(String reccur_interval) {
-		this.reccur_interval = reccur_interval;
+	public void setRecur_interval(String recur_interval) {
+		this.recur_interval = recur_interval;
 	}
 	
-	public int getReccur_day() {
-		return reccur_day;
+	public int getRecurr_day() {
+		return recurr_day;
 	}
 	
-	public void setReccur_day(int reccur_day) {
-		this.reccur_day = reccur_day;
+	public void setRecurr_day(int recurr_day) {
+		this.recurr_day = recurr_day;
 	}
 	
-	public int getReccur_count() {
-		return reccur_count;
+	public int getRecurr_count() {
+		return recurr_count;
 	}
 	
-	public void setReccur_count(int reccur_count) {
-		this.reccur_count = reccur_count;
+	public void setRecurr_count(int recurr_count) {
+		this.recurr_count = recurr_count;
 	}
 	
 	public Date getTransaction_date() {
@@ -144,7 +148,7 @@ public class Outcome {
 		this.user = user;
 	}
 	
-	public Category getCetegory() {
+	public Category getCategory() {
 		return category_id;
 	}
 	
@@ -154,9 +158,9 @@ public class Outcome {
 	
 	@Override
 	public String toString() {
-		return "Outcome [outcome_id=" + outcome_id + ", name=" + name + ", amount=" + amount + ", reccuring=" + reccuring
-				+ ", reccur_interval=" + reccur_interval + ", reccur_day=" + reccur_day + ", reccur_count="
-				+ reccur_count + ", transaction_date=" + transaction_date + ", entry_date=" + entry_date + ", user="
+		return "Outcome [outcome_id=" + outcome_id + ", name=" + name + ", amount=" + amount + ", recurring=" + recurring
+				+ ", reccur_interval=" + recur_interval + ", reccur_day=" + recurr_day + ", reccur_count="
+				+ recurr_count + ", transaction_date=" + transaction_date + ", entry_date=" + entry_date + ", user="
 				+ user + ", catagory=" + category_id + "]";
 	}
 

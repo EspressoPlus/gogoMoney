@@ -16,5 +16,37 @@
 			class="btn btn-primary btn-sm active" role="button"
 			aria-pressed="true">Back to Home</a></div>
 	</form>
+	
+	<br><br><br>
+	<table>
+			<tr>
+			<th>name</th>
+			<th>amount</th>
+			<th>user_id</th>
+			<th>category_id</th>
+			<th>recurring</th>
+			<th>recur_interval</th>
+			<th>recur_day</th>
+			<th>recur_count</th>
+			<th>transaction_date</th>
+			<th>entry_date</th>
+			
+		</tr>
+		<c:forEach var="o" items="${outcomes}">
+		<tr>
+			<th>${o.name}</th>
+			<th>amount</th>
+			<th>user_id</th>
+			<th>category_id</th>
+			<th>recurring</th>
+			<th>recur_interval</th>
+			<th>recur_day</th>
+			<th>recur_count</th>
+			<th>transaction_date</th>
+			<th>entry_date</th>
+		</tr>
+		</c:forEach>
+	</table>
+	
 </body>
 </html>
