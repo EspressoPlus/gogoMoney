@@ -23,7 +23,7 @@ public class UserDAOImpl implements UserDAO {
 		Session session = sessionFactory.getCurrentSession();
 		Query<User> query = session.createQuery("From User", User.class);
 		for(User user : query.getResultList()) {
-			System.out.println(user.getUname());
+			//System.out.println(user.getUname());
 		}
 		return query.getResultList();
 	}
