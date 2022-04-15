@@ -1,4 +1,4 @@
-package com.gogo.entity;
+package main.java.com.gogo.entity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,7 +32,7 @@ public class User {
 	private String password;
 	@Column(name="start_balance")
 	private double start_balance;
-	@Column(name="amout_to_save") // LEAVE amout. It is a typo but the database is also a typo.
+	@Column(name="amount_to_save") // LEAVE amout. It is a typo but the database is also a typo.
 	private double amount_to_save;
 	
 	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL)

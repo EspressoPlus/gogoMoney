@@ -1,4 +1,4 @@
-package com.gogo.dao;
+package main.java.com.gogo.dao;
 
 import java.util.List;
 
@@ -9,7 +9,8 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.gogo.entity.User;
+import main.java.com.gogo.entity.User;
+
 
 @Repository
 public class UserDAOImpl implements UserDAO {
@@ -48,6 +49,27 @@ public class UserDAOImpl implements UserDAO {
 		query.setParameter("id", id);
 		query.executeUpdate();
 		
+	}
+	
+	@Override
+	public List<User> getEmail(String email, String password) {
+		Session session = sessionFactory.getCurrentSession();
+		Query<User> query = session.createQuery("from User where email like :email AND password like :password", User.class);
+		query.setParameter("email", email);
+		query.setParameter("password", password);
+		
+		return query.getResultList();
+		
+	}
+	
+	@Override
+	public User getUserInfo(String email)
+	{
+		Session session = sessionFactory.getCurrentSession();
+		Query<User> query = session.createQuery("from User where email like :email", User.class);
+		query.setParameter("email", email);
+		
+		return query.getSingleResult();
 	}
 
 
