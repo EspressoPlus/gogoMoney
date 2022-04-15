@@ -14,7 +14,7 @@ public interface MoneyDAO {
 	
 	public List<Income> getIncomes(int user_id);
 //	
-    public List<Outcome> getOutcomes(int user_id);
+    public List<Outcome> getOutcomes(int user_id); 
 	
 	public List<Category> getCategorys();
 	

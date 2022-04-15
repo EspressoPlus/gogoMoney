@@ -62,7 +62,7 @@ public class UserDAOImpl implements UserDAO {
 		
 	}
 	
-	@Override
+	@Override 
 	public User getUserInfo(String email)
 	{
 		Session session = sessionFactory.getCurrentSession();

@@ -177,7 +177,7 @@ public class Income {
 	}
 
 
-	@Override
+	@Override 
 	public String toString() {
 		return "Income [name=" + name + ", amount=" + amount + ", recurring=" + recurring + ", recur_interval="
 				+ recur_interval + ", recurr_day=" + recurr_day + ", recurr_count=" + recurr_count

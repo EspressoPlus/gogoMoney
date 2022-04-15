@@ -18,7 +18,7 @@ import main.java.com.gogo.entity.Outcome;
 
 
 @Repository
-public class MoneyDAOImpl implements MoneyDAO {
+public class MoneyDAOImpl implements MoneyDAO { 
 
 	//needs testing
 	

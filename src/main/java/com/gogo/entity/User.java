@@ -35,7 +35,7 @@ public class User {
 	@Column(name="amount_to_save") // LEAVE amout. It is a typo but the database is also a typo.
 	private double amount_to_save;
 	
-	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL) 
 	private List<Income> incomes = new ArrayList<Income>();
 	
 	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL)

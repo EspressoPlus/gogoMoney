@@ -35,7 +35,7 @@ public class Outcome {
 	@Column(name="recurr_count")
 	private int recurr_count;
 	@Column(name="transaction_date")
-	private Date transaction_date;
+	private Date transaction_date; 
 	@Column(name="entry_date")
 	private Date entry_date;
 	

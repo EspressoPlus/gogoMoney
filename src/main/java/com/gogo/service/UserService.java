@@ -12,5 +12,5 @@ public interface UserService {
 	
 	public Boolean validateLogin(String email, String password);
 	
-	public User getUserInfo(String email);
+	public User getUserInfo(String email); 
 }

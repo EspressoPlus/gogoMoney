@@ -26,7 +26,7 @@ public class MoneyServiceImpl implements MoneyService {
 	@Transactional
 	public List<Income> getIncomes(int user_id) {
 		// TODO Auto-generated method stub
-		return moneyDAO.getIncomes(user_id);
+		return moneyDAO.getIncomes(user_id); 
 	}
 
 	@Override

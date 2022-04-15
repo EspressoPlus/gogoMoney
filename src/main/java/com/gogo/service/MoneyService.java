@@ -23,7 +23,7 @@ public interface MoneyService {
 	
 	public Income getIncome(int id);
 	
-	public Outcome getOucome(int id);
+	public Outcome getOucome(int id); 
 	
 	public Category getCategory(int id);
 	

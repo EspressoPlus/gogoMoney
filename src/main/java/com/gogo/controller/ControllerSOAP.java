@@ -48,7 +48,7 @@ public class ControllerSOAP {
 			List<Income> incomes = moneyService.getIncomes(user.getUser_id());
 			model.addAttribute("user", user);
 			model.addAttribute("outcomes", outcomes);
-			model.addAttribute("incomes", incomes);
+			model.addAttribute("incomes", incomes); 
 			return "validate";
 		}
 		else
