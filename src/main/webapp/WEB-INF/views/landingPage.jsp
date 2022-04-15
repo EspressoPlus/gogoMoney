@@ -13,6 +13,7 @@
 <b>Login Page</b>
 
 	<form method="post" action="validate">
+		<c:set var="error" value="${error}"></c:set>
 		<table>
 			<tr>
                         <td>Email</td>
@@ -22,7 +23,16 @@
                         <td>Password</td>
                         <td><input type="password" name="password" required/></td>
                     </tr>
+                   	<c:choose>
+                   		<c:when test="${error==true}">
+                   			<tr>
+                   				<td></td>
+                   				<td style="color: red;">Invalid Email or Password</td>
+                   			</tr>
+                   		</c:when>
+                   	</c:choose>
                     <tr>
+                    	<td></td>
                         <td colspan="2" align="center"><input type="submit" value="Login" />
                             &nbsp;&nbsp;
                             <input type="reset" value="Reset" />
@@ -34,7 +44,7 @@
 			<a href="${pageContext.request.contextPath}/createAccount/"
 				class="btn btn-primary btn-sm active" role="button"
 				aria-pressed="true">Create Account</a>
-		</div>
+			</div>
         </form>
 			
 		

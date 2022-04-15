@@ -1,19 +1,20 @@
-package com.gogo.dao;
+package main.java.com.gogo.dao;
 
 import java.util.List;
 
-import com.gogo.entity.Category;
-import com.gogo.entity.Income;
-import com.gogo.entity.Outcome;
+import main.java.com.gogo.entity.Category;
+import main.java.com.gogo.entity.Income;
+import main.java.com.gogo.entity.Outcome;
+
 
 
 
 
 public interface MoneyDAO {
 	
-	public List<Income> getIncomes();
+	public List<Income> getIncomes(int user_id);
 //	
-    public List<Outcome> getOutcomes();
+    public List<Outcome> getOutcomes(int user_id); 
 	
 	public List<Category> getCategorys();
 	

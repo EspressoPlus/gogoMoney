@@ -1,4 +1,4 @@
-package com.gogo.entity;
+package main.java.com.gogo.entity;
 
 import java.sql.Date;
 
@@ -26,16 +26,16 @@ public class Outcome {
 	private String name;
 	@Column(name="amount")
 	private double amount;
-	@Column(name="reccuring")
-	private String reccuring;
-	@Column(name="reccur_interval")
-	private String reccur_interval;
-	@Column(name="reccur_day")
-	private int reccur_day;
-	@Column(name="reccur_count")
-	private int reccur_count;
+	@Column(name="recurring")
+	private String recurring;
+	@Column(name="recur_interval")
+	private String recur_interval;
+	@Column(name="recurr_day")
+	private int recurr_day;
+	@Column(name="recurr_count")
+	private int recurr_count;
 	@Column(name="transaction_date")
-	private Date transaction_date;
+	private Date transaction_date; 
 	@Column(name="entry_date")
 	private Date entry_date;
 	
@@ -49,15 +49,16 @@ public class Outcome {
 	private Category category_id;
 	
 	public Outcome() {}
-	public Outcome(String name, double amount, String reccuring, String reccur_interval, int reccur_day,
-			int reccur_count, Date transaction_date, Date entry_date, User user, Category category_id) {
+	public Outcome(int outcome_id, String name, double amount, String recurring, String recur_interval, int recurr_day,
+			int recurr_count, Date transaction_date, Date entry_date, User user, Category category_id) {
 		super();
+		this.outcome_id = outcome_id;
 		this.name = name;
 		this.amount = amount;
-		this.reccuring = reccuring;
-		this.reccur_interval = reccur_interval;
-		this.reccur_day = reccur_day;
-		this.reccur_count = reccur_count;
+		this.recurring = recurring;
+		this.recur_interval = recur_interval;
+		this.recurr_day = recurr_day;
+		this.recurr_count = recurr_count;
 		this.transaction_date = transaction_date;
 		this.entry_date = entry_date;
 		this.user = user;
@@ -67,97 +68,77 @@ public class Outcome {
 	public int getOutcome_id() {
 		return outcome_id;
 	}
-	
-	public void setOutcome_id(int income_id) {
-		this.outcome_id = income_id;
+	public void setOutcome_id(int outcome_id) {
+		this.outcome_id = outcome_id;
 	}
-	
 	public String getName() {
 		return name;
 	}
-	
 	public void setName(String name) {
 		this.name = name;
 	}
-	
 	public double getAmount() {
 		return amount;
 	}
-	
 	public void setAmount(double amount) {
 		this.amount = amount;
 	}
-	
-	public String getReccuring() {
-		return reccuring;
+	public String getRecurring() {
+		return recurring;
 	}
-	
-	public void setReccuring(String reccuring) {
-		this.reccuring = reccuring;
+	public void setRecurring(String recurring) {
+		this.recurring = recurring;
 	}
-	
-	public String getReccur_interval() {
-		return reccur_interval;
+	public String getRecur_interval() {
+		return recur_interval;
 	}
-	
-	public void setReccur_interval(String reccur_interval) {
-		this.reccur_interval = reccur_interval;
+	public void setRecur_interval(String recur_interval) {
+		this.recur_interval = recur_interval;
 	}
-	
-	public int getReccur_day() {
-		return reccur_day;
+	public int getRecurr_day() {
+		return recurr_day;
 	}
-	
-	public void setReccur_day(int reccur_day) {
-		this.reccur_day = reccur_day;
+	public void setRecurr_day(int recurr_day) {
+		this.recurr_day = recurr_day;
 	}
-	
-	public int getReccur_count() {
-		return reccur_count;
+	public int getRecurr_count() {
+		return recurr_count;
 	}
-	
-	public void setReccur_count(int reccur_count) {
-		this.reccur_count = reccur_count;
+	public void setRecurr_count(int recurr_count) {
+		this.recurr_count = recurr_count;
 	}
-	
 	public Date getTransaction_date() {
 		return transaction_date;
 	}
-	
 	public void setTransaction_date(Date transaction_date) {
 		this.transaction_date = transaction_date;
 	}
-	
 	public Date getEntry_date() {
 		return entry_date;
 	}
-	
 	public void setEntry_date(Date entry_date) {
 		this.entry_date = entry_date;
 	}
-	
 	public User getUser() {
 		return user;
 	}
-	
 	public void setUser(User user) {
 		this.user = user;
 	}
-	
-	public Category getCategory() {
+	public Category getCategory_id() {
 		return category_id;
 	}
-	
-	public void setCategory(Category category) {
-		this.category_id = category;
+	public void setCategory_id(Category category_id) {
+		this.category_id = category_id;
 	}
-	
 	@Override
 	public String toString() {
-		return "Outcome [outcome_id=" + outcome_id + ", name=" + name + ", amount=" + amount + ", reccuring=" + reccuring
-				+ ", reccur_interval=" + reccur_interval + ", reccur_day=" + reccur_day + ", reccur_count="
-				+ reccur_count + ", transaction_date=" + transaction_date + ", entry_date=" + entry_date + ", user="
-				+ user + ", catagory=" + category_id + "]";
+		return "Outcome [name=" + name + ", amount=" + amount + ", recurring=" + recurring + ", recur_interval="
+				+ recur_interval + ", recurr_day=" + recurr_day + ", recurr_count=" + recurr_count
+				+ ", transaction_date=" + transaction_date + ", entry_date=" + entry_date + ", user=" + user
+				+ ", category_id=" + category_id + "]";
 	}
+	
+	
 
 }

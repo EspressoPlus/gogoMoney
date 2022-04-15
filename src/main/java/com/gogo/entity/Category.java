@@ -1,4 +1,4 @@
-package com.gogo.entity;
+package main.java.com.gogo.entity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,7 +34,7 @@ public class Category {
 	
 	public Category() {}
 	public Category(String category_name) {
-		this.category_name = category_name;
+		this.category_name = category_name; 
 	}
 
 	public int getCategory_id() {
