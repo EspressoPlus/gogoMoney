@@ -9,8 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import main.java.com.gogo.entity.Income;
-import main.java.com.gogo.entity.Outcome;
+import main.java.com.gogo.entity.Financial;
 import main.java.com.gogo.entity.User;
 import main.java.com.gogo.service.MoneyService;
 import main.java.com.gogo.service.UserService;
@@ -44,11 +43,11 @@ public class ControllerSOAP {
 		if(valid == true)
 		{
 			User user = userService.getUserInfo(login.getEmail());
-			List<Outcome> outcomes = moneyService.getOutcomes(user.getUser_id());
-			List<Income> incomes = moneyService.getIncomes(user.getUser_id());
+			List<Financial> income = moneyService.getIncomes(user.getUser_id());
+			List<Financial> outcome = moneyService.getOutcomes(user.getUser_id());
 			model.addAttribute("user", user);
-			model.addAttribute("outcomes", outcomes);
-			model.addAttribute("incomes", incomes); 
+			model.addAttribute("income", income); 
+			model.addAttribute("outcome", outcome);
 			return "validate";
 		}
 		else
