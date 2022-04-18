@@ -2,22 +2,8 @@ package com.gogo.dao;
 
 import java.util.List;
 
-<<<<<<< HEAD
 import com.gogo.entity.Category;
-import com.gogo.entity.Income;
-import com.gogo.entity.Outcome;
-
-
-//import main.java.com.gogo.entity.Category;
-//import main.java.com.gogo.entity.Income;
-//import main.java.com.gogo.entity.Outcome;
-=======
-import main.java.com.gogo.entity.Category;
-import main.java.com.gogo.entity.Financial;
->>>>>>> a6a137565aa5f96ae5509727f186cdf53aa2b956
-
-
-
+import com.gogo.entity.Financial;
 
 
 public interface MoneyDAO {
