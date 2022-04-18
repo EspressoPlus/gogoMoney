@@ -1,6 +1,7 @@
-package main.java.com.gogo.service;
+package com.gogo.service;
 
 import java.util.ArrayList;
+
 import java.util.Arrays;
 
 import java.util.List;
@@ -10,10 +11,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import main.java.com.gogo.dao.MoneyDAO;
-import main.java.com.gogo.entity.Category;
-import main.java.com.gogo.entity.Income;
-import main.java.com.gogo.entity.Outcome;
+import com.gogo.dao.MoneyDAO;
+import com.gogo.entity.Category;
+import com.gogo.entity.Income;
+import com.gogo.entity.Outcome;
+
+//import main.java.com.gogo.dao.MoneyDAO;
+//import main.java.com.gogo.entity.Category;
+//import main.java.com.gogo.entity.Income;
+//import main.java.com.gogo.entity.Outcome;
 
 
 @Service

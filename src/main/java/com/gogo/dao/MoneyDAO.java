@@ -1,10 +1,15 @@
-package main.java.com.gogo.dao;
+package com.gogo.dao;
 
 import java.util.List;
 
-import main.java.com.gogo.entity.Category;
-import main.java.com.gogo.entity.Income;
-import main.java.com.gogo.entity.Outcome;
+import com.gogo.entity.Category;
+import com.gogo.entity.Income;
+import com.gogo.entity.Outcome;
+
+
+//import main.java.com.gogo.entity.Category;
+//import main.java.com.gogo.entity.Income;
+//import main.java.com.gogo.entity.Outcome;
 
 
 

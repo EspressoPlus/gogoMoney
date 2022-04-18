@@ -1,8 +1,11 @@
-package main.java.com.gogo.dao;
+package com.gogo.dao;
 
 import java.util.List;
 
-import main.java.com.gogo.entity.User;
+import com.gogo.entity.User;
+
+
+//import main.java.com.gogo.entity.User;
 
 
 public interface UserDAO {

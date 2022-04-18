@@ -1,6 +1,8 @@
-package main.java.com.gogo.controller;
+package com.gogo.controller;
 
 import java.util.ArrayList;
+
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,11 +11,17 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import main.java.com.gogo.entity.Income;
-import main.java.com.gogo.entity.Outcome;
-import main.java.com.gogo.entity.User;
-import main.java.com.gogo.service.MoneyService;
-import main.java.com.gogo.service.UserService;
+import com.gogo.entity.Income;
+import com.gogo.entity.Outcome;
+import com.gogo.entity.User;
+import com.gogo.service.MoneyService;
+import com.gogo.service.UserService;
+
+//import main.java.com.gogo.entity.Income;
+//import main.java.com.gogo.entity.Outcome;
+//import main.java.com.gogo.entity.User;
+//import main.java.com.gogo.service.MoneyService;
+//import main.java.com.gogo.service.UserService;
 
 
 @Controller

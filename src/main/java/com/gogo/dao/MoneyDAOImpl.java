@@ -1,4 +1,4 @@
-package main.java.com.gogo.dao;
+package com.gogo.dao;
 
 import java.util.List;
 
@@ -9,9 +9,13 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import main.java.com.gogo.entity.Category;
-import main.java.com.gogo.entity.Income;
-import main.java.com.gogo.entity.Outcome;
+import com.gogo.entity.Category;
+import com.gogo.entity.Income;
+import com.gogo.entity.Outcome;
+
+//import main.java.com.gogo.entity.Category;
+//import main.java.com.gogo.entity.Income;
+//import main.java.com.gogo.entity.Outcome;
 
 
 //import com.gogo.entity.Transaction;
