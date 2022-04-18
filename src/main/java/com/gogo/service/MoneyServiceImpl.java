@@ -12,8 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import main.java.com.gogo.dao.MoneyDAO;
 import main.java.com.gogo.entity.Category;
-import main.java.com.gogo.entity.Income;
-import main.java.com.gogo.entity.Outcome;
+import main.java.com.gogo.entity.Financial;
 
 
 @Service
@@ -24,14 +23,14 @@ public class MoneyServiceImpl implements MoneyService {
 	
 	@Override
 	@Transactional
-	public List<Income> getIncomes(int user_id) {
+	public List<Financial> getIncomes(int user_id) {
 		// TODO Auto-generated method stub
 		return moneyDAO.getIncomes(user_id); 
 	}
 
 	@Override
 	@Transactional
-	public List<Outcome> getOutcomes(int user_id) {
+	public List<Financial> getOutcomes(int user_id) {
 		
 		return moneyDAO.getOutcomes(user_id);
 	}
@@ -45,14 +44,14 @@ public class MoneyServiceImpl implements MoneyService {
 
 	@Override
 	@Transactional
-	public Income getIncome(int id) {
+	public Financial getIncome(int id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	@Transactional
-	public Outcome getOucome(int id) {
+	public Financial getOucome(int id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -66,14 +65,14 @@ public class MoneyServiceImpl implements MoneyService {
 
 	@Override
 	@Transactional
-	public void saveIncome(Income theIncome) {
+	public void saveIncome(Financial theIncome) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	@Transactional
-	public void saveOutcome(Outcome theOutcome) {
+	public void saveOutcome(Financial theOutcome) {
 		// TODO Auto-generated method stub
 		
 	}

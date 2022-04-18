@@ -20,23 +20,29 @@ public class User {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="user_id")
 	private int user_id;
+	
 	@Column(name="user_first_name")
 	private String user_first_name;
+	
 	@Column(name="user_last_name")
 	private String user_last_name;
+	
 	@Column(name="email")
 	private String email;
+	
 	//@Column(name="username")
 	//private String username; // NO variable  username in the database
 	@Column(name="password")
 	private String password;
+	
 	@Column(name="start_balance")
 	private double start_balance;
-	@Column(name="amount_to_save") // LEAVE amout. It is a typo but the database is also a typo.
+	
+	@Column(name="amount_to_save") 
 	private double amount_to_save;
 	
 	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL) 
-	private List<Income> incomes = new ArrayList<Income>();
+	private List<Financial> financials = new ArrayList<Financial>();
 	
 	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
 	private List<Outcome> outcomes = new ArrayList<Outcome>();
@@ -105,8 +111,8 @@ public class User {
 		return outcomes;
 	}
 
-	public List<Income> getIncomes() {
-		return incomes;
+	public List<Financial> getIncomes() {
+		return financials;
 	}
 	public double getAmount_to_save() {
 		return amount_to_save;
@@ -114,8 +120,8 @@ public class User {
 	public void setAmount_to_save(double amount_to_save) {
 		this.amount_to_save = amount_to_save;
 	}
-	public void setIncomes(List<Income> incomes) {
-		this.incomes = incomes;
+	public void setIncomes(List<Financial> financials) {
+		this.financials = financials;
 	}
 	public void setOutcomes(List<Outcome> outcomes) {
 		this.outcomes = outcomes;

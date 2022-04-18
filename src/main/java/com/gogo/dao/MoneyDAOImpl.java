@@ -10,11 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import main.java.com.gogo.entity.Category;
-import main.java.com.gogo.entity.Income;
-import main.java.com.gogo.entity.Outcome;
-
-
-//import com.gogo.entity.Transaction;
+import main.java.com.gogo.entity.Financial;
 
 
 @Repository
@@ -26,19 +22,21 @@ public class MoneyDAOImpl implements MoneyDAO {
 	private SessionFactory sessionFactory;
 
 	@Override
-	public List<Income> getIncomes(int user_id) {
+	public List<Financial> getIncomes(int user_id) {
 		Session session = sessionFactory.getCurrentSession();
-		Query<Income> query = session.createQuery("From Income where user_id = :user_id", Income.class);
+		Query<Financial> query = session.createQuery("From Financial where user_id = :user_id AND income_outcome = :income", Financial.class);
 		query.setParameter("user_id", user_id);
+		query.setParameter("income", "income");
 		
 		return query.getResultList();
 	}
 
 	@Override
-	public List<Outcome> getOutcomes(int user_id) {
+	public List<Financial> getOutcomes(int user_id) {
 		Session session = sessionFactory.getCurrentSession();
-		Query<Outcome> query = session.createQuery("From Outcome where user_id = :user_id", Outcome.class);
+		Query<Financial> query = session.createQuery("From Financial where user_id = :user_id AND income_outcome = :outcome", Financial.class);
 		query.setParameter("user_id", user_id);
+		query.setParameter("outcome", "outcome");
 		
 		return query.getResultList();
 	}
@@ -52,15 +50,15 @@ public class MoneyDAOImpl implements MoneyDAO {
 	}
 
 	@Override
-	public Income getIncome(int id) {
+	public Financial getIncome(int id) {
 		Session session = sessionFactory.getCurrentSession();
-		return session.get(Income.class, id);
+		return session.get(Financial.class, id);
 	}
 
 	@Override
-	public Outcome getOucome(int id) {
+	public Financial getOucome(int id) {
 		Session session = sessionFactory.getCurrentSession();
-		return session.get(Outcome.class, id);
+		return session.get(Financial.class, id);
 	}
 
 	@Override
@@ -70,7 +68,7 @@ public class MoneyDAOImpl implements MoneyDAO {
 	}
 
 	@Override
-	public void saveIncome(Income theIncome) {
+	public void saveIncome(Financial theIncome) {
 		Session session = sessionFactory.getCurrentSession();
 		
 		session.saveOrUpdate(theIncome);
@@ -78,7 +76,7 @@ public class MoneyDAOImpl implements MoneyDAO {
 	}
 
 	@Override
-	public void saveOutcome(Outcome theOutcome) {
+	public void saveOutcome(Financial theOutcome) {
 		Session session = sessionFactory.getCurrentSession();
 		
 		session.saveOrUpdate(theOutcome);
@@ -96,7 +94,7 @@ public class MoneyDAOImpl implements MoneyDAO {
 	@Override
 	public void deleteIncome(int id) {
 		Session session = sessionFactory.getCurrentSession();
-		Query query = session.createQuery("delete from Income where id = :id");
+		Query query = session.createQuery("delete from Financial where id = :id");
 		query.setParameter("id", id);
 		query.executeUpdate();
 		
@@ -105,7 +103,7 @@ public class MoneyDAOImpl implements MoneyDAO {
 	@Override
 	public void deleteOutcome(int id) {
 		Session session = sessionFactory.getCurrentSession();
-		Query query = session.createQuery("delete from Outcome where id = :id");
+		Query query = session.createQuery("delete from Financial where id = :id");
 		query.setParameter("id", id);
 		query.executeUpdate();
 		

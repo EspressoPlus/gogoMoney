@@ -33,7 +33,7 @@
 		<br>
 		<h5>Outcome</h5>
 		<table>
-			<c:forEach var="outcome" items="${outcomes}">
+			<c:forEach var="outcome" items="${outcome}">
 			<tr>
 				<td>${outcome.name}</td>
 				<td>${outcome.amount}</td>
@@ -49,7 +49,7 @@
 		</table>
 		<h5>Income</h5>
 		<table>
-			<c:forEach var="income" items="${incomes}">
+			<c:forEach var="income" items="${income}">
 			<tr>
 				<td>${income.name}</td>
 				<td>${income.amount}</td>
