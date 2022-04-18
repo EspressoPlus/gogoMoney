@@ -15,12 +15,12 @@ import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-@Table(name="Outcome")
+@Table(name="financial")
 public class Outcome {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="outcome_id")
+	@Column(name="financial_id")
 	private int outcome_id;
 	@Column(name="name")
 	private String name;

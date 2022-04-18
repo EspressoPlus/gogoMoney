@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+<<<<<<< HEAD
 import com.gogo.entity.Income;
 import com.gogo.entity.Outcome;
 import com.gogo.entity.User;
@@ -22,6 +23,12 @@ import com.gogo.service.UserService;
 //import main.java.com.gogo.entity.User;
 //import main.java.com.gogo.service.MoneyService;
 //import main.java.com.gogo.service.UserService;
+=======
+import main.java.com.gogo.entity.Financial;
+import main.java.com.gogo.entity.User;
+import main.java.com.gogo.service.MoneyService;
+import main.java.com.gogo.service.UserService;
+>>>>>>> a6a137565aa5f96ae5509727f186cdf53aa2b956
 
 
 @Controller
@@ -52,11 +59,11 @@ public class ControllerSOAP {
 		if(valid == true)
 		{
 			User user = userService.getUserInfo(login.getEmail());
-			List<Outcome> outcomes = moneyService.getOutcomes(user.getUser_id());
-			List<Income> incomes = moneyService.getIncomes(user.getUser_id());
+			List<Financial> income = moneyService.getIncomes(user.getUser_id());
+			List<Financial> outcome = moneyService.getOutcomes(user.getUser_id());
 			model.addAttribute("user", user);
-			model.addAttribute("outcomes", outcomes);
-			model.addAttribute("incomes", incomes); 
+			model.addAttribute("income", income); 
+			model.addAttribute("outcome", outcome);
 			return "validate";
 		}
 		else

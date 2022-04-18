@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+<<<<<<< HEAD
 import com.gogo.entity.Category;
 import com.gogo.entity.Income;
 import com.gogo.entity.Outcome;
@@ -16,25 +17,29 @@ import com.gogo.entity.Outcome;
 //import main.java.com.gogo.entity.Category;
 //import main.java.com.gogo.entity.Income;
 //import main.java.com.gogo.entity.Outcome;
+=======
+import main.java.com.gogo.entity.Category;
+import main.java.com.gogo.entity.Financial;
+>>>>>>> a6a137565aa5f96ae5509727f186cdf53aa2b956
 
 @Service
 public interface MoneyService {
 	
-	public List<Income> getIncomes(int user_id);
+	public List<Financial> getIncomes(int user_id);
 //	
-    public List<Outcome> getOutcomes(int user_id);
+    public List<Financial> getOutcomes(int user_id);
 	
 	public List<Category> getCategorys();
 	
-	public Income getIncome(int id);
+	public Financial getIncome(int id);
 	
-	public Outcome getOucome(int id); 
+	public Financial getOucome(int id); 
 	
 	public Category getCategory(int id);
 	
-	public void saveIncome(Income theIncome);
+	public void saveIncome(Financial theIncome);
 	
-	public void saveOutcome(Outcome theOutcome);
+	public void saveOutcome(Financial theOutcome);
 	
 	public void saveCategory(Category theCategory);
 	

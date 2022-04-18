@@ -12,8 +12,6 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import com.gogo.entity.Income;
-import com.gogo.entity.Outcome;
 
 @Entity
 @Table(name="category")
@@ -23,14 +21,12 @@ public class Category {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="category_id")
 	private int category_id;
+	
 	@Column(name="category_name")
 	private String category_name;
 	
 	@OneToMany(mappedBy = "category_id", cascade = CascadeType.ALL)
-	private List<Income> incomes = new ArrayList<Income>();
-	
-	@OneToMany(mappedBy = "category_id", cascade = CascadeType.ALL)
-	private List<Outcome> outcomes = new ArrayList<Outcome>();
+	private List<Financial> financials = new ArrayList<Financial>();
 	
 	public Category() {}
 	public Category(String category_name) {
@@ -53,11 +49,8 @@ public class Category {
 		this.category_name = category_name;
 	}
 
-	public List<Income> getIncomes() {
-		return incomes;
-	}
-	public List<Outcome> getOutcomes() {
-		return outcomes;
+	public List<Financial> getFinancials() {
+		return financials;
 	}
 	
 	@Override
