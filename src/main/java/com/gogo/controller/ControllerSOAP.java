@@ -11,25 +11,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-<<<<<<< HEAD
-import com.gogo.entity.Income;
-import com.gogo.entity.Outcome;
+import com.gogo.entity.Financial;
 import com.gogo.entity.User;
 import com.gogo.service.MoneyService;
 import com.gogo.service.UserService;
-
-//import main.java.com.gogo.entity.Income;
-//import main.java.com.gogo.entity.Outcome;
-//import main.java.com.gogo.entity.User;
-//import main.java.com.gogo.service.MoneyService;
-//import main.java.com.gogo.service.UserService;
-=======
-import main.java.com.gogo.entity.Financial;
-import main.java.com.gogo.entity.User;
-import main.java.com.gogo.service.MoneyService;
-import main.java.com.gogo.service.UserService;
->>>>>>> a6a137565aa5f96ae5509727f186cdf53aa2b956
-
 
 @Controller
 public class ControllerSOAP {
