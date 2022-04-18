@@ -8,10 +8,12 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Login</title>
+<style></style>
 </head>
 <body>
-<b>Login Page</b>
-
+<h1>GoGo Money</h1>
+	<p>Login</p>
+	<p>If you don't have an account, please select create account!</p>
 	<form method="post" action="validate">
 		<c:set var="error" value="${error}"></c:set>
 		<table>

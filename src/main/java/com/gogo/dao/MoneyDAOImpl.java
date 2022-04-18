@@ -3,27 +3,17 @@ package com.gogo.dao;
 import java.util.List;
 
 
+
 import org.hibernate.query.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-
-<<<<<<< HEAD
 import com.gogo.entity.Category;
-import com.gogo.entity.Income;
+import com.gogo.entity.Financial;
+//import com.gogo.entity.Income;
 import com.gogo.entity.Outcome;
 
-//import main.java.com.gogo.entity.Category;
-//import main.java.com.gogo.entity.Income;
-//import main.java.com.gogo.entity.Outcome;
-
-
-//import com.gogo.entity.Transaction;
-=======
-import main.java.com.gogo.entity.Category;
-import main.java.com.gogo.entity.Financial;
->>>>>>> a6a137565aa5f96ae5509727f186cdf53aa2b956
 
 
 @Repository

@@ -10,7 +10,7 @@
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
 
 	<context:component-scan
-		base-package="main.java.com.gogo"> <!-- specific to my setup -->
+		base-package="com.gogo"> <!-- someone else's base-package="main.java.com.gogo"-->
 	</context:component-scan>
 	
 	<mvc:annotation-driven></mvc:annotation-driven>
@@ -43,7 +43,7 @@
 		class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
 	<property name="dataSource" ref="myDataSource"></property>
 	<property name="packagesToScan"
-		value="main.java.com.gogo">
+		value="com.gogo">
 	</property>
 	<property name="hibernateProperties">
 		<props>
