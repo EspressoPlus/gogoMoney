@@ -2,6 +2,10 @@
 
 This is the gogoMoney web database ...
 
+Trello Pages:
+* https://trello.com/b/5BNUB7NC/gogomoney
+* https://trello.com/b/Y39fG2ww/connect-jsp-pages
+
 This system will:
 * bullets here 
 
