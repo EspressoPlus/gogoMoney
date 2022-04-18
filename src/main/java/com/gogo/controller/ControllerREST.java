@@ -1,4 +1,4 @@
-package main.java.com.gogo.controller;
+package com.gogo.controller;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

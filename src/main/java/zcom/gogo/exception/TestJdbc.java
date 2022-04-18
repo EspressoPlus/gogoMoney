@@ -30,7 +30,7 @@ public class TestJdbc {
 //			exc.printStackTrace();
 //		}
 		
-		String jdbcUrl = "jdbc:mysql://localhost:3306/gogomoney03-02?useSSL=false";
+		String jdbcUrl = "jdbc:mysql://localhost:3306/gogomoney04-01?useSSL=false";
 		String user = "root";
 		String pass="Simba8Appa";
 		try {

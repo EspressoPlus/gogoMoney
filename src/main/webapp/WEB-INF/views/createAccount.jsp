@@ -12,11 +12,15 @@
 </head>
 <body>
 	<h1>Create your account!</h1>
-	<form>
+	<form:form action="processUser" modelAttribute="user" method="post">
 		<table>
 			<tr>
-				<td>Enter Name</td>
-				<td><input type="text" name="name" required /></td>
+				<td>Enter First Name</td>
+				<td><input type="text" name="Fname" required /></td>
+			</tr>
+			<tr>
+				<td>Enter Last Name</td>
+				<td><input type="text" name="Lname" required /></td>
 			</tr>
 			<tr>
 				<td>Email</td>
@@ -38,6 +42,6 @@
 				class="btn btn-primary btn-sm active" role="button"
 				aria-pressed="true">Finances</a>
 		</div>
-	</form>
+	</form:form>
 </body>
 </html>
