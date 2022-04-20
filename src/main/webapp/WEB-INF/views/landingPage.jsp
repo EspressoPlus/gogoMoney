@@ -12,7 +12,7 @@
 <body>
 <b>Login Page</b>
 
-	<form method="post" action="validate">
+	<form method="post" action="displaySummary">
 		<c:set var="error" value="${error}"></c:set>
 		<table>
 			<tr>

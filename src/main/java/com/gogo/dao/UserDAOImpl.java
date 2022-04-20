@@ -70,6 +70,7 @@ public class UserDAOImpl implements UserDAO {
 	{
 		Session session = sessionFactory.getCurrentSession();
 		Query<User> query = session.createQuery("from User where email like :email", User.class);
+		
 		query.setParameter("email", email);
 		
 		return query.getSingleResult();
