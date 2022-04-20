@@ -63,6 +63,6 @@
 			</tr>
 			</c:forEach>
 		</table>
-	<p>${none}</p>
+	
 </body>
 </html>
