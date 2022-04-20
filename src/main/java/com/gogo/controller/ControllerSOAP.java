@@ -24,7 +24,7 @@ public class ControllerSOAP {
 	@Autowired
 	private UserService userService;
 	@Autowired
-	private MoneyService moneyService;
+	private MoneyService moneyService; // comment
 	
 	// landingPage.jsp
 	// landing page for user login / create acct
