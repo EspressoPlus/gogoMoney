@@ -61,9 +61,31 @@ public class ControllerSOAP {
 	
 	// createAccount.jsp
 	// -> displaySummary
+	//No, I don't want to do that, I think it would be far better to just direct to populate finances
 	@RequestMapping("/createAccount")
-	public String createAccount() {
-		return "createAccount";
+	public String createAccount(@ModelAttribute("fName") String fName, @ModelAttribute("lName") String lName,
+			@ModelAttribute("email") String email, @ModelAttribute("password") String password,
+			@ModelAttribute("start_balance") String start_balance, @ModelAttribute("amount_to_save") String amount_to_save) {
+		
+		Double sBal = 0.0;
+		Double toSave = 0.0;
+		
+		try {
+			sBal = Double.parseDouble(start_balance);
+			toSave = Double.parseDouble(amount_to_save);
+		} catch (Exception e) {
+			//to make more sophisticated, maybe an error page
+			//or go back to the form with a form error?
+			//TBD
+		}
+		
+		//code to encrypt password
+		
+		User user = new User(fName, lName, email, password, sBal, toSave);
+		
+		userService.createUser(user);
+		
+		return "populateFinances";
 	}
 	
 	// displaySummary.jsp
