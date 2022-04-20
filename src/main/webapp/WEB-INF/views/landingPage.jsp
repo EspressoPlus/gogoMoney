@@ -40,16 +40,27 @@
                     </tr>                    
                 
             </table>
+            
+	</form>
+            
             <div>
-			<a href="${pageContext.request.contextPath}/createAccount/"
+			<a href="${pageContext.request.contextPath}/createAccount"
 				class="btn btn-primary btn-sm active" role="button"
-				aria-pressed="true">Create Account</a>
+				aria-pressed="true">/createAccount</a>
+			<br><br>
+			<a href="${pageContext.request.contextPath}/displaySummary"
+				class="btn btn-primary btn-sm active" role="button"
+				aria-pressed="true">/displaySummary</a>
+			<br><br>
+			<a href="${pageContext.request.contextPath}/displayTransactions"
+				class="btn btn-primary btn-sm active" role="button"
+				aria-pressed="true">/displayTransactions</a>
+			<br><br>
+			<a href="${pageContext.request.contextPath}/populateFinances"
+				class="btn btn-primary btn-sm active" role="button"
+				aria-pressed="true">/populateFinances</a>
 			</div>
-        </form>
-			
-		
-
-
+        
 
 </body>
 </html>
