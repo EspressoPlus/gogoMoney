@@ -51,7 +51,7 @@ public class ControllerSOAP {
 			 model.addAttribute("user", user);
 			 model.addAttribute("income", income);
 			 model.addAttribute("outcome", outcome);
-			 return "validate";
+			 return "validate";//comment
 		 }
 		 else 
 		 {
