@@ -1,7 +1,5 @@
 package com.gogo.service;
 
-import java.util.ArrayList;
-
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -57,6 +55,11 @@ public class UserServiceImpl implements UserService {
 	public User getUserInfo(String email) 
 	{
 		return userDAO.getUserInfo(email);
+	}
+
+	@Override
+	public void createUser(User user) {
+		userDAO.saveUser(user);
 	}
  
 
