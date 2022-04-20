@@ -90,14 +90,15 @@ public class MoneyServiceImpl implements MoneyService {
 	@Override
 	@Transactional
 	public void deleteIncome(int id) {
-		// TODO Auto-generated method stub
+		moneyDAO.deleteIncome(id);
 		
 	}
 
 	@Override
 	@Transactional
 	public void deleteOutcome(int id) {
-		// TODO Auto-generated method stub
+		moneyDAO.deleteOutcome(id);
+		
 		
 	}
 

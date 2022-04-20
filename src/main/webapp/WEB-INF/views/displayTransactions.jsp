@@ -15,10 +15,20 @@ table, th, td {
 	margin-right: auto;
 	font-size: 150%;
 }
+
 tr:hover {
 	background-color: #a4f6fd;
 }
 </style>
+<style>
+h2 {text-align: center;}
+</style>
+
+<style><%@include file="/resources/css/styleBody.css"%></style>
+<style><%@include file="/resources/css/styleForm.css"%></style>
+<style><%@include file="/resources/css/styleTable.css"%></style>
+
+
 </head>
 <body>
 	<h1>This is the displayTransactions page. The transaction
@@ -30,36 +40,84 @@ tr:hover {
 				aria-pressed="true">Back to Home</a>
 		</div>
 	</form>
-	<table>
+	
+	
+	
+	<p>${user.user_first_name} ${user.user_last_name}</p>
+		<br>
+		<h2>Outcome</h2>
+		<table>
+			<tr>
+				<th>Name</th>
+				<th>Amount</th>
+				<th>Category</th>
+				<th>Recurring</th>
+				<th>Recur Interval</th>
+				<th>Recur Day</th>
+				<th>Recur Count</th>
+				<th>Transaction Date</th>
+				<th>Entry Date</th>
+				<th></th>
+				
+			</tr>
+			<c:forEach var="outcome" items="${outcome}">
+			<tr>
+				<td>${outcome.name}</td>
+				<td>${outcome.amount}</td>
+				<td>${outcome.category_id.category_name}</td>
+				<td>${outcome.recurring}</td>
+				<td>${outcome.recur_interval}</td>
+				<td>${outcome.recurr_day}</td>
+				<td>${outcome.recurr_count}</td>
+				<td>${outcome.transaction_date}</td>
+				<td>${outcome.entry_date}</td>
+				<td>
+				<form:form action="${pageContext.request.contextPath}/deleteTransaction" method="post">
+						<input type="hidden" name="incomeId" value="${outcome.financial_id}" />
+						<input type="submit" value="Delete" />
+				</form:form>
+				</td>
+			</tr>
+			</c:forEach>
+		</table>
+		<h2>Income</h2>
+		<table>
 		<tr>
-			<th>Day</th>
-			<th>Transaction Name</th>
-			<th>Amount</th>
-			<th>Category</th>
-		</tr>
-		<%-- <c:forEach var="eachTrans" items="${transactions}"> --%>
-		<tr>
-			<td>
-				<%--${eachTrans.day} --%>
-			</td>
-			<td>
-				<%--${eachTrans.transactionName} --%>
-			</td>
-			<td>
-				<%--${eachTrans.amount} --%>
-			</td>
-			<td>
-				<%--${eachTrans.category} --%>
-			</td>
-			<td>
-				<%--<form  action="deleteTrans" method="post" >--%>
-				<%--<input type="hidden" name="transactionId" value="${eachTrans.id}"--%> 
-				<input type="submit" value="Delete" />
-				<%-- </form>--%>
-			</td>
-		</tr>
-		<%-- </c:forEach> --%>
-	</table>
+				<th>Name</th>
+				<th>Amount</th>
+				<th>Category</th>
+				<th>Recurring</th>
+				<th>Recur Interval</th>
+				<th>Recur Day</th>
+				<th>Recur Count</th>
+				<th>Transaction Date</th>
+				<th>Entry Date</th>
+				<th></th>
+				
+			</tr>
+			<c:forEach var="income" items="${income}">
+			<tr>
+				<td>${income.name}</td>
+				<td>${income.amount}</td>
+				<td>${income.category_id.category_name}</td>
+				<td>${income.recurring}</td>
+				<td>${income.recur_interval}</td>
+				<td>${income.recurr_day}</td>
+				<td>${income.recurr_count}</td>
+				<td>${income.transaction_date}</td>
+				<td>${income.entry_date}</td>
+				<td>
+				<form:form action="${pageContext.request.contextPath}/deleteTransaction" method="post">
+						<input type="hidden" name="outcomeId" value="${income.financial_id}" />
+						<input type="submit" value="Delete" />
+				</form:form>
+				</td>
+			</tr>
+			</c:forEach>
+		</table>
+		
+		
+			
 	
 </body>
 </html>
