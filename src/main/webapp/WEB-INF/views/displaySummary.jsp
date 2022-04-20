@@ -14,7 +14,11 @@
 
 	<h1>Welcome @Name! This is home/displaySummary</h1>
 
-	<form>
+	
+	
+	
+	
+	<br><br><br><br><br>
 		<div>
 			<a href="${pageContext.request.contextPath}/displayTransactions/"
 				class="btn btn-primary btn-sm active" role="button"
@@ -30,6 +34,6 @@
 				class="btn btn-primary btn-sm active" role="button"
 				aria-pressed="true">Login/logout</a>
 		</div>
-	</form>
+	
 </body>
 </html>
