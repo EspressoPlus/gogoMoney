@@ -1,8 +1,9 @@
-package com.gogo.entity;
+package main.java.com.gogo.entity;
 
 import java.sql.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -32,6 +33,9 @@ public class Financial {
 	@Column(name="amount")
 	private double amount;
 	
+	@Column(name="category")
+	private int category;
+	
 	@Column(name="recurring")
 	private String recurring;
 	
@@ -50,14 +54,9 @@ public class Financial {
 	@Column(name="entry_date")
 	private Date entry_date;
 	
-	@ManyToOne(cascade={CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
+	@ManyToOne(cascade={CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH}, fetch = FetchType.EAGER)
 	@JoinColumn(name="user_id")
 	private User user;
-	
-	@ManyToOne(cascade={CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
-	@JoinColumn(name="category_id")
-	@JsonIgnore
-	private Category category_id;
 	
 	public Financial() {}
 
@@ -91,6 +90,14 @@ public class Financial {
 
 	public void setAmount(double amount) {
 		this.amount = amount;
+	}
+
+	public int getCategory() {
+		return category;
+	}
+
+	public void setCategory(int category) {
+		this.category = category;
 	}
 
 	public String getRecurring() {
@@ -149,22 +156,15 @@ public class Financial {
 		this.user = user;
 	}
 
-	public Category getCategory_id() {
-		return category_id;
-	}
-
-	public void setCategory_id(Category category_id) {
-		this.category_id = category_id;
-	}
-
-	public Financial(int financial_id, String name, String income_outcome, double amount, String recurring,
-			String recur_interval, int recurr_day, int recurr_count, Date transaction_date, Date entry_date, User user,
-			Category category_id) {
+	public Financial(int financial_id, String name, String income_outcome, double amount, int category,
+			String recurring, String recur_interval, int recurr_day, int recurr_count, Date transaction_date,
+			Date entry_date, User user) {
 		super();
 		this.financial_id = financial_id;
 		this.name = name;
 		this.income_outcome = income_outcome;
 		this.amount = amount;
+		this.category = category;
 		this.recurring = recurring;
 		this.recur_interval = recur_interval;
 		this.recurr_day = recurr_day;
@@ -172,15 +172,16 @@ public class Financial {
 		this.transaction_date = transaction_date;
 		this.entry_date = entry_date;
 		this.user = user;
-		this.category_id = category_id;
 	}
 
 	@Override
 	public String toString() {
-		return "Financial [name=" + name + ", income_outcome=" + income_outcome + ", amount=" + amount + ", recurring="
-				+ recurring + ", recur_interval=" + recur_interval + ", recurr_day=" + recurr_day + ", recurr_count="
-				+ recurr_count + ", transaction_date=" + transaction_date + ", entry_date=" + entry_date + ", user="
-				+ user + ", category_id=" + category_id + "]";
+		return "Financial [name=" + name + ", income_outcome=" + income_outcome + ", amount=" + amount + ", category="
+				+ category + ", recurring=" + recurring + ", recur_interval=" + recur_interval + ", recurr_day="
+				+ recurr_day + ", recurr_count=" + recurr_count + ", transaction_date=" + transaction_date
+				+ ", entry_date=" + entry_date + ", user=" + user + "]";
 	}
+
+	
 	
 }
