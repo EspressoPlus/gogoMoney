@@ -9,10 +9,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.gogo.entity.Financial;
+import com.gogo.entity.FinancialRegService;
 import com.gogo.entity.User;
 import com.gogo.service.MoneyService;
 import com.gogo.service.UserService;
@@ -25,6 +27,8 @@ public class ControllerSOAP {
 	private UserService userService;
 	@Autowired
 	private MoneyService moneyService; // comment
+	@Autowired
+	private FinancialRegService regService;
 	
 	// landingPage.jsp
 	// landing page for user login / create acct
@@ -133,7 +137,59 @@ public class ControllerSOAP {
 		}
 	
 	// THIS COMMENT IS TO PRACTICE MY GITHUB PUSH
-
+	// populateFinances.jsp
+	@RequestMapping("/populateFinances")
+	public String populateFinances(@ModelAttribute("users") User user, Model m) 
+	{
+		//User user = userService.getUser(4);
+		Financial financial = new Financial();
+		user.add(financial);
+		List<Financial> current = moneyService.getFinances(user.getUser_id());
+			
+		m.addAttribute("user", user);
+		m.addAttribute("financial", financial);
+		m.addAttribute("current", current);
+			
+		return "populateFinances";
+	}
+	
+	//adds the financial line to table
+	@RequestMapping("/processUser/{user_Id}")
+	public String processUser(@PathVariable int user_Id, @ModelAttribute("financial") Financial financial, Model m)
+	{
+		User use = userService.getUser(user_Id);
+		financial.setUser(use);
+	
+		java.util.Date uDate = new java.util.Date();
+		java.sql.Date date = new java.sql.Date(uDate.getTime());
+		financial.setEntry_date(date);
+		moneyService.saveFinances(financial);
+		
+		return "redirect:/populateFinances";
+	}
+	
+	//deletes row of finance
+	@RequestMapping("/deleteFinance")
+	public String deleteOrder(@RequestParam("financial_id") int id, @RequestParam("user_id") int user_id)
+	{
+		User user = userService.getUser(user_id);
+		Financial financial = moneyService.getFinance(id);
+		
+		moneyService.deleteFinance(id);
+		user.remove(financial);
+		
+		return"redirect:/populateFinances";
+	}
+	
+	// This will allow the drop down lists to be populated
+	@ModelAttribute
+	public void populateFormWithData(Model model)
+	{
+		model.addAttribute("financeList", regService.populateCategory()); //category list
+		model.addAttribute("recurrList", regService.populateRecurrence()); //true or false
+		model.addAttribute("intervalList", regService.populateInterval()); //monthly, weekly, bi-weekly, once
+		model.addAttribute("inOrOutList", regService.populateIncomeOutcome());//income/expense
+	}
 	
 	
 }
