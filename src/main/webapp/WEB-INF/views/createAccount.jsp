@@ -52,6 +52,14 @@ td {
 							<td><input type="password" name="password" required></td>
 						</tr>
 						<tr>
+							<td style="font-family: Arial" ;style="color:white"><b>Current Bank Account Balance<b></td>
+							<td><input type="text" name="start_balance" required></td>
+						</tr>
+						<tr>
+							<td style="font-family: Arial" ;style="color:white"><b>Total To Be Saved<b></td>
+							<td><input type="text" name="amount_to_save" required></td>
+						</tr>
+						<tr>
 							<td></td>
 							<td><input type="submit" class="btn btn-primary btn-sm active" value="Add User"></td>
 						</tr>
