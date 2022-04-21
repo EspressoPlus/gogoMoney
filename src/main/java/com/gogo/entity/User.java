@@ -1,4 +1,4 @@
-package com.gogo.entity;
+package main.java.com.gogo.entity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,11 +6,14 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name="user")
@@ -30,8 +33,6 @@ public class User {
 	@Column(name="email")
 	private String email;
 	
-	//@Column(name="username")
-	//private String username; // NO variable  username in the database
 	@Column(name="password")
 	private String password;
 	
@@ -41,15 +42,14 @@ public class User {
 	@Column(name="amount_to_save") 
 	private double amount_to_save;
 	
-	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL) 
+	@JsonIgnore
+	@OneToMany(mappedBy = "user", cascade = {CascadeType.DETACH, CascadeType.MERGE,CascadeType.REFRESH}, fetch = FetchType.EAGER, orphanRemoval=true) 
 	private List<Financial> financials = new ArrayList<Financial>();
 	
-	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-	private List<Outcome> outcomes = new ArrayList<Outcome>();
-	
 	public User() {}
-	public User(String first_name, String last_name, String email, String password,
+	public User(int user_id, String first_name, String last_name, String email, String password,
 			double start_balance, double amount_to_save) {
+		this.user_id = user_id;
 		this.user_first_name = first_name;
 		this.user_last_name = last_name;
 		this.email = email;
@@ -106,26 +106,48 @@ public class User {
 	public void setStart_balance(double user_balance) {
 		this.start_balance = user_balance;
 	}
-	
-	public List<Outcome> getOutcomes() {
-		return outcomes;
-	}
 
-	public List<Financial> getIncomes() {
+	public List<Financial> getFinancials() {
 		return financials;
 	}
+	
+	public Financial getFinancial(int id)
+	{
+		Financial fin = new Financial();
+		for(int i = 0; i < financials.size(); i++)
+		{
+			if(financials.get(i).getFinancial_id() == id)
+			{
+				fin = financials.get(i);
+			}
+		}
+		
+		return fin;
+	}
+	
 	public double getAmount_to_save() {
 		return amount_to_save;
 	}
+	
 	public void setAmount_to_save(double amount_to_save) {
 		this.amount_to_save = amount_to_save;
 	}
-	public void setIncomes(List<Financial> financials) {
+	
+	public void setFinancials(List<Financial> financials) {
 		this.financials = financials;
 	}
-	public void setOutcomes(List<Outcome> outcomes) {
-		this.outcomes = outcomes;
+	
+	public void add(Financial financial)
+	{
+		financials.add(financial);
+		financial.setUser(this);
 	}
+	
+	public void remove(Financial financial)
+	{
+		financials.remove(financial);
+	}
+	
 	@Override
 	public String toString() {
 		return "User [user_id=" + user_id + ", user_first_name=" + user_first_name + ", user_last_name="
