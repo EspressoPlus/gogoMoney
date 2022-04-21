@@ -34,6 +34,13 @@ public class UserServiceImpl implements UserService {
 	
 	@Override
 	@Transactional
+	public User getUser(int user_id) 
+	{
+		return userDAO.getUser(user_id);
+	}
+	
+	@Override
+	@Transactional
 	public Boolean validateLogin(String email, String password)
 	{
 		List<User> matches = userDAO.getEmail(email,password);
