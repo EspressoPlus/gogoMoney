@@ -13,6 +13,8 @@ public interface UserService {
 
 	public List<User> getUsers();
 	
+	public User getUser(int user_id);
+	
 	public Boolean validateLogin(String email, String password);
 	
 	public User getUserInfo(String email);
