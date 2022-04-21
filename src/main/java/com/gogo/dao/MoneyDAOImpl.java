@@ -9,7 +9,6 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.gogo.entity.Category;
 import com.gogo.entity.Financial;
 import com.gogo.entity.Outcome;
 
@@ -42,13 +41,37 @@ public class MoneyDAOImpl implements MoneyDAO {
 		
 		return query.getResultList();
 	}
-
+	
 	@Override
-	public List<Category> getCategorys() {
+	public List<Financial> getFinances(int user_id) {
 		Session session = sessionFactory.getCurrentSession();
-		Query<Category> query = session.createQuery("From Category", Category.class);
+		Query<Financial> query = session.createQuery("From Financial where user_id = :user_id", Financial.class);
+		query.setParameter("user_id", user_id);
 		
 		return query.getResultList();
+	}
+	
+	@Override
+	public Financial getFinance(int id) {
+		Session session = sessionFactory.getCurrentSession();
+		
+		return session.get(Financial.class, id);
+	}
+	
+	@Override
+	public void saveFinances(Financial financial)
+	{
+		Session session = sessionFactory.getCurrentSession();
+		
+		session.saveOrUpdate(financial);
+	}
+	
+	@Override
+	public void deleteFinance(int id)
+	{
+		Session session = sessionFactory.getCurrentSession();
+		Financial financial = session.get(Financial.class, id);
+		session.remove(financial);
 	}
 
 	@Override
@@ -61,12 +84,6 @@ public class MoneyDAOImpl implements MoneyDAO {
 	public Financial getOucome(int id) {
 		Session session = sessionFactory.getCurrentSession();
 		return session.get(Financial.class, id);
-	}
-
-	@Override
-	public Category getCategory(int id) {
-		Session session = sessionFactory.getCurrentSession();
-		return session.get(Category.class, id);
 	}
 
 	@Override
@@ -86,14 +103,6 @@ public class MoneyDAOImpl implements MoneyDAO {
 	}
 
 	@Override
-	public void saveCategory(Category theCategory) {
-		Session session = sessionFactory.getCurrentSession();
-		
-		session.saveOrUpdate(theCategory);
-		
-	}
-
-	@Override
 	public void deleteIncome(int id) {
 		Session session = sessionFactory.getCurrentSession();
 		Query query = session.createQuery("delete from Financial where id = :id");
@@ -106,15 +115,6 @@ public class MoneyDAOImpl implements MoneyDAO {
 	public void deleteOutcome(int id) {
 		Session session = sessionFactory.getCurrentSession();
 		Query query = session.createQuery("delete from Financial where id = :id");
-		query.setParameter("id", id);
-		query.executeUpdate();
-		
-	}
-
-	@Override
-	public void deleteCategory(int id) {
-		Session session = sessionFactory.getCurrentSession();
-		Query query = session.createQuery("delete from Category where id = :id");
 		query.setParameter("id", id);
 		query.executeUpdate();
 		
