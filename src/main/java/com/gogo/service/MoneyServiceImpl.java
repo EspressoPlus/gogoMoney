@@ -12,7 +12,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.gogo.dao.MoneyDAO;
-import com.gogo.entity.Category;
 import com.gogo.entity.Financial;
 import com.gogo.entity.Outcome;
 
@@ -40,28 +39,42 @@ public class MoneyServiceImpl implements MoneyService {
 
 	@Override
 	@Transactional
-	public List<Category> getCategorys() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	@Transactional
 	public Financial getIncome(int id) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+	
+	@Override
+	@Transactional
+	public List<Financial> getFinances(int user_id)
+	{
+		return moneyDAO.getFinances(user_id);
+	}
+	
+	@Override
+	@Transactional
+	public Financial getFinance(int user_id)
+	{
+		return moneyDAO.getFinance(user_id);
+	}
+	
+	@Override
+	@Transactional
+	public void saveFinances(Financial financial)
+	{
+		moneyDAO.saveFinances(financial);
+	}
+	
+	@Override
+	@Transactional
+	public void deleteFinance(int id)
+	{
+		moneyDAO.deleteFinance(id);
 	}
 
 	@Override
 	@Transactional
 	public Financial getOucome(int id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	@Transactional
-	public Category getCategory(int id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
