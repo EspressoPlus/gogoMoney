@@ -23,7 +23,11 @@ public interface MoneyService {
 //	
     public List<Financial> getOutcomes(int user_id);
 	
-	public List<Financial> getFinances(int user_id);
+	public List<Financial> getIncomesOneTime(int user_id);
+    
+    public List<Financial> getOutcomesOneTime(int user_id);
+	
+	public List<Financial> getFinancesCurrent(int user_id);
 	
 	public Financial getFinance(int id);
 	
