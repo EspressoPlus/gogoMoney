@@ -112,8 +112,8 @@ public class ControllerSOAP {
 	@RequestMapping("/displayTransactions")
 	public String displayTransactions(Model model) {
 		
-		List<Financial> income = moneyService.getIncomes(userTemp.getUser_id());
-		List<Financial> outcome = moneyService.getOutcomes(userTemp.getUser_id());
+		List<Financial> income = moneyService.getIncomesOneTime(userTemp.getUser_id());
+		List<Financial> outcome = moneyService.getOutcomesOneTime(userTemp.getUser_id());
 		
 		model.addAttribute("user", userTemp);
 		model.addAttribute("income", income); 
@@ -138,13 +138,10 @@ public class ControllerSOAP {
 	@RequestMapping("/populateFinances")
 	public String populateFinances(@ModelAttribute("user") User user, Model m) 
 	{
-		if(modelAttribute == false) {//so that returning to displaySummary from displayTransactions does not cause an error
-			userTemp = userService.getUserInfo(user.getEmail()); // gets user based on the email they entered on landingPage
-		}
 		//User user = userService.getUser(4);
 		Financial financial = new Financial();
 		userTemp.add(financial);
-		List<Financial> current = moneyService.getFinances(userTemp.getUser_id());
+		List<Financial> current = moneyService.getFinancesCurrent(userTemp.getUser_id());
 		
 		java.util.Date uDate = new java.util.Date();
 		java.sql.Date date = new java.sql.Date(uDate.getTime());
@@ -154,7 +151,6 @@ public class ControllerSOAP {
 		
 		//get surplus amount
 		Double surplus = moneyService.getSurplus(userTemp.getUser_id());
-		System.out.println("***************surplus is = " + surplus);
 			
 		m.addAttribute("user", userTemp);
 		m.addAttribute("financial", financial);
