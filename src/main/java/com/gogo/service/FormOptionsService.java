@@ -1,4 +1,4 @@
-package com.gogo.service;
+package main.java.com.gogo.service;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;

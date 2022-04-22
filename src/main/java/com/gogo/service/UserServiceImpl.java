@@ -1,4 +1,4 @@
-package com.gogo.service;
+package main.java.com.gogo.service;
 
 import java.util.List;
 
@@ -6,8 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.gogo.dao.UserDAO;
-import com.gogo.entity.User;
+import main.java.com.gogo.dao.UserDAO;
+import main.java.com.gogo.entity.User;
+
 
 //import main.java.com.gogo.dao.UserDAO;
 //import main.java.com.gogo.entity.User;

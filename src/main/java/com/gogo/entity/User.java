@@ -47,9 +47,8 @@ public class User {
 	private List<Financial> financials = new ArrayList<Financial>();
 	
 	public User() {}
-	public User(int user_id, String first_name, String last_name, String email, String password,
+	public User(String first_name, String last_name, String email, String password,
 			double start_balance, double amount_to_save) {
-		this.user_id = user_id;
 		this.user_first_name = first_name;
 		this.user_last_name = last_name;
 		this.email = email;

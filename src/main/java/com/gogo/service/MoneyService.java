@@ -1,5 +1,6 @@
-package com.gogo.service;
+package main.java.com.gogo.service;
 
+import java.sql.Date;
 import java.util.List;
 
 
@@ -9,9 +10,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import main.java.com.gogo.entity.Financial;
+import main.java.com.gogo.entity.User;
 
-import com.gogo.entity.Financial;
-import com.gogo.entity.Outcome;
+
 
 
 @Service
@@ -19,7 +21,7 @@ public interface MoneyService {
 	
 	public List<Financial> getIncomes(int user_id);
 //	
-    	public List<Financial> getOutcomes(int user_id);
+    public List<Financial> getOutcomes(int user_id);
 	
 	public List<Financial> getFinances(int user_id);
 	
@@ -28,6 +30,10 @@ public interface MoneyService {
 	public Financial getIncome(int id);
 	
 	public Financial getOucome(int id); 
+	
+	public int getSavingsTime(Date date, User user);
+	
+	public Double getSurplus(int user_id);
 	
 	public void saveFinances(Financial financial);
 	

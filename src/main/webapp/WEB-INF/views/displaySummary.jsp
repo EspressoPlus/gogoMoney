@@ -12,24 +12,38 @@
 </head>
 <body>
 
-	<h1>Welcome @Name! This is home/displaySummary</h1>
+	<h1>Welcome ${pass.user_first_name}! This is home/displaySummary</h1>
 
-	<form>
+	<%-- <form> --%>
 		<div>
-			<a href="${pageContext.request.contextPath}/displayTransactions/"
-				class="btn btn-primary btn-sm active" role="button"
-				aria-pressed="true">Transaction History</a>
+			<form:form action="/gogoMoney/displayTransactions" modelAttribute="user" method="post">
+				<input type="hidden" name="user_id" value="${pass.user_id}">
+				<input type="hidden" name="user_first_name" value="${pass.user_first_name}">
+				<input type="hidden" name="user_last_name" value="${pass.user_last_name}">
+				<input type="hidden" name="email" value="${pass.email}">
+				<input type="hidden" name="password" value="${pass.password}">
+				<input type="hidden" name="start_balance" value="${pass.start_balance}">
+				<input type="hidden" name="amount_to_save" value="${pass.amount_to_save}">
+				<input type="submit" value="Transaction History">
+			</form:form>
 		</div>
 		<div>
-			<a href="${pageContext.request.contextPath}/populateFinances/"
-				class="btn btn-primary btn-sm active" role="button"
-				aria-pressed="true">Finances</a>
+			<form:form action="/gogoMoney/populateFinances" modelAttribute="user" method="post">
+				<input type="hidden" name="user_id" value="${pass.user_id}">
+				<input type="hidden" name="user_first_name" value="${pass.user_first_name}">
+				<input type="hidden" name="user_last_name" value="${pass.user_last_name}">
+				<input type="hidden" name="email" value="${pass.email}">
+				<input type="hidden" name="password" value="${pass.password}">
+				<input type="hidden" name="start_balance" value="${pass.start_balance}">
+				<input type="hidden" name="amount_to_save" value="${pass.amount_to_save}">
+				<input type="submit" value="Finances">
+			</form:form>
 		</div>
 		<div>
-			<a href="${pageContext.request.contextPath}/"
-				class="btn btn-primary btn-sm active" role="button"
-				aria-pressed="true">Login/logout</a>
+			<form:form action="/gogoMoney" modelAttribute="user" method="post">
+				<input type="submit" value="Login/Logout">
+			</form:form>
 		</div>
-	</form>
+	<%-- </form> --%>
 </body>
 </html>

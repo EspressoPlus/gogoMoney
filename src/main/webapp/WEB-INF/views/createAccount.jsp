@@ -27,7 +27,7 @@ td {
 </head>
 <body>
 	<h1 style="color:white">Create your account!</h1>
-	<form:form action="processUser" modelAttribute="user" method="post">
+	<form:form action="processAccount" modelAttribute="user" method="post">
 		
 		<table class=center>
 			<tr>
@@ -36,12 +36,12 @@ td {
 						<tr>
 							<td style="font-family: verdana" ;style="color:white"><b>Enter
 								First Name</b></td>
-							<td><input type="text" name="Fname" required></td>
+							<td><input type="text" name="user_first_name" required></td>
 						</tr>
 						<tr>
 							<td style="font-family: Arial" ;style="color:white"><b>Enter
 								Last Name<b></td>
-							<td><input type="text" name="Lname" required></td>
+							<td><input type="text" name="user_last_name" required></td>
 						</tr>
 						<tr>
 							<td style="font-family: Arial" ;style="color:white"><b>Email<b></td>
