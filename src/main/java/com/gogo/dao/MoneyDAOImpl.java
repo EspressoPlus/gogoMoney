@@ -1,4 +1,4 @@
-package main.java.com.gogo.dao;
+package com.gogo.dao;
 
 import java.util.List;
 
@@ -9,7 +9,7 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import main.java.com.gogo.entity.Financial;
+import com.gogo.entity.Financial;
 
 
 
@@ -121,19 +121,19 @@ public class MoneyDAOImpl implements MoneyDAO {
 	}
 
 //	@Override
-//	public main.java.com.gogo.dao.Income getIncome(int id) {
+//	public com.gogo.dao.Income getIncome(int id) {
 //		// TODO Auto-generated method stub
 //		return null;
 //	}
 //
 //	@Override
-//	public main.java.com.gogo.dao.Outcome getOucome(int id) {
+//	public com.gogo.dao.Outcome getOucome(int id) {
 //		// TODO Auto-generated method stub
 //		return null;
 //	}
 //
 //	@Override
-//	public main.java.com.gogo.dao.Category getCategory(int id) {
+//	public com.gogo.dao.Category getCategory(int id) {
 //		// TODO Auto-generated method stub
 //		return null;
 //	}

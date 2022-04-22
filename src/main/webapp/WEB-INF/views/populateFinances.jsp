@@ -34,7 +34,8 @@ tr:hover {
 </head>
 <body>
 	<h1>Let's populate your Finances, ${user.user_first_name}</h1>
-	<form:form action="/gogoMoney/processUser/${user.user_id}" modelAttribute="financial" method="post">
+	<%-- <form:form action="/gogoMoney/processUser/${user.user_id}" modelAttribute="financial" method="post"> --%>
+	<form:form action="processUser/${user.user_id}" modelAttribute="financial" method="post">
 			<table>
 				<tr>
 					<td> Current Balance <td>
@@ -88,7 +89,8 @@ tr:hover {
 				<input type="submit" value="Add Another" />
 				
 	</form:form>
-				<form:form action="/gogoMoney/displaySummary" modelAttribute="user" method="post">
+				<%-- <form:form action="/gogoMoney/displaySummary" modelAttribute="user" method="post"> --%>
+				<form:form action="displaySummary" modelAttribute="user" method="post">
 				<input type="hidden" name="user_id" value="${user.user_id}">
 				<input type="hidden" name="user_first_name" value="${user.user_first_name}">
 				<input type="hidden" name="user_last_name" value="${user.user_last_name}">
@@ -124,7 +126,8 @@ tr:hover {
 			<td>${finance.recurr_count}</td>
 			<td>${finance.transaction_date}</td>
 			<td>${finance.entry_date}</td>
-			<td><form action="/gogoMoney/deleteFinance" method="post">
+			<%-- <td><form action="/gogoMoney/deleteFinance" method="post"> --%>
+			<td><form action="deleteFinance" method="post">
 				<input type="hidden" name="financial_id" value="${finance.financial_id}"/>
 				<input type="hidden" name="user_id" value="${user.user_id}"/>
 				<input type="submit" value="Delete">

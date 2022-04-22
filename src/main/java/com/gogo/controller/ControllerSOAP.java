@@ -1,4 +1,4 @@
-package main.java.com.gogo.controller;
+package com.gogo.controller;
 
 import java.util.ArrayList;
 
@@ -13,11 +13,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import main.java.com.gogo.entity.Financial;
-import main.java.com.gogo.entity.FinancialRegService;
-import main.java.com.gogo.entity.User;
-import main.java.com.gogo.service.MoneyService;
-import main.java.com.gogo.service.UserService;
+import com.gogo.entity.Financial;
+import com.gogo.entity.FinancialRegService;
+import com.gogo.entity.User;
+import com.gogo.service.MoneyService;
+import com.gogo.service.UserService;
 
 
 @Controller
