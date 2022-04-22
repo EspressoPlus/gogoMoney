@@ -48,7 +48,7 @@ public class MoneyServiceImpl implements MoneyService {
 	
 	@Override
 	@Transactional
-	public List<Financial> getFinances(int user_id)
+	public List<Financial> getFinancesCurrent(int user_id)
 	{
 		return moneyDAO.getFinances(user_id);
 	}
