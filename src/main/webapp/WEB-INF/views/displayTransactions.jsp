@@ -33,13 +33,16 @@ h2 {text-align: center;}
 <body>
 	<h1>This is the displayTransactions page. The transaction
 		spreadsheet page</h1>
-	<form>
-		<div>
-			<a href="${pageContext.request.contextPath}/displaySummary/"
-				class="btn btn-primary btn-sm active" role="button"
-				aria-pressed="true">Back to Home</a>
-		</div>
-	</form>
+	<form:form action="/gogoMoney/displaySummary" modelAttribute="user" method="post">
+		<input type="hidden" name="user_id" value="${user.user_id}">
+		<input type="hidden" name="user_first_name" value="${user.user_first_name}">
+		<input type="hidden" name="user_last_name" value="${user.user_last_name}">
+		<input type="hidden" name="email" value="${user.email}">
+		<input type="hidden" name="password" value="${user.password}">
+		<input type="hidden" name="start_balance" value="${user.start_balance}">
+		<input type="hidden" name="amount_to_save" value="${user.amount_to_save}">
+		<input type="submit" value="Home">
+	</form:form>
 	
 	
 	
@@ -64,7 +67,7 @@ h2 {text-align: center;}
 			<tr>
 				<td>${outcome.name}</td>
 				<td>${outcome.amount}</td>
-				<td>${outcome.category_id.category_name}</td>
+				<td>${outcome.category}</td>
 				<td>${outcome.recurring}</td>
 				<td>${outcome.recur_interval}</td>
 				<td>${outcome.recurr_day}</td>
@@ -99,7 +102,7 @@ h2 {text-align: center;}
 			<tr>
 				<td>${income.name}</td>
 				<td>${income.amount}</td>
-				<td>${income.category_id.category_name}</td>
+				<td>${income.category}</td>
 				<td>${income.recurring}</td>
 				<td>${income.recur_interval}</td>
 				<td>${income.recurr_day}</td>

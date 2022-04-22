@@ -1,9 +1,10 @@
-package com.gogo.service;
+package main.java.com.gogo.service;
 
 
 import java.util.List;
 
-import com.gogo.entity.User;
+import main.java.com.gogo.entity.User;
+
 
 
 //import main.java.com.gogo.entity.User;

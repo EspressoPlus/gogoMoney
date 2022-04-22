@@ -1,4 +1,4 @@
-package com.gogo.controller;
+package main.java.com.gogo.controller;
 
 import java.util.ArrayList;
 
@@ -13,11 +13,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.gogo.entity.Financial;
-import com.gogo.entity.FinancialRegService;
-import com.gogo.entity.User;
-import com.gogo.service.MoneyService;
-import com.gogo.service.UserService;
+import main.java.com.gogo.entity.Financial;
+import main.java.com.gogo.entity.FinancialRegService;
+import main.java.com.gogo.entity.User;
+import main.java.com.gogo.service.MoneyService;
+import main.java.com.gogo.service.UserService;
+
 
 @Controller
 public class ControllerSOAP {
@@ -36,9 +37,10 @@ public class ControllerSOAP {
 	// create -> /createAcct
 	@RequestMapping("/")
 	public String landingPage(Model m) {
-		List<User> users = userService.getUsers(); //to add customer email and password to model
+		//List<User> users = userService.getUsers(); //to add customer email and password to model
 		Boolean error = false; //hides the "invalid email and password" error message ***See validate method***
-		m.addAttribute("users", users);
+		User user = new User();
+		m.addAttribute("user", user);
 		m.addAttribute("error", error);
 		
 		return "landingPage"; // redirect to the summary instead of validate which I commented out below for now
@@ -70,37 +72,39 @@ public class ControllerSOAP {
 	// -> displaySummary
 	//No, I don't want to do that, I think it would be far better to just direct to populate finances
 	@RequestMapping("/createAccount")
-	public String createAccount(@ModelAttribute("fName") String fName, @ModelAttribute("lName") String lName,
-			@ModelAttribute("email") String email, @ModelAttribute("password") String password,
-			@ModelAttribute("start_balance") String start_balance, @ModelAttribute("amount_to_save") String amount_to_save) {
+	public String createAccount(Model model) {
 		
-		Double sBal = 0.0;
-		Double toSave = 0.0;
+		User user = new User();
+		model.addAttribute("user", user);
 		
-		try {
-			sBal = Double.parseDouble(start_balance);
-			toSave = Double.parseDouble(amount_to_save);
-		} catch (Exception e) {
-			//to make more sophisticated, maybe an error page
-			//or go back to the form with a form error?
-			//TBD
-		}
+		//userService.createUser(user);
 		
-		//code to encrypt password
-		
-		User user = new User(fName, lName, email, password, sBal, toSave);
-		
+		return "createAccount";
+	}
+	
+	@RequestMapping("/processAccount")
+	public String processAccount(@ModelAttribute("user") User user, Model m)
+	{
 		userService.createUser(user);
+		userTemp = userService.getUserInfo(user.getEmail());
 		
-		return "populateFinances";
+		return "redirect:/populateFinances";
 	}
 	
 	// displaySummary.jsp
 	@RequestMapping("/displaySummary")
-	public String displaySummary(@ModelAttribute("users") User login, Model model) {
+	public String displaySummary(@ModelAttribute("user") User login, Model model) {
 		if(modelAttribute == false) {//so that returning to displaySummary from displayTransactions does not cause an error
 			userTemp = userService.getUserInfo(login.getEmail()); // gets user based on the email they entered on landingPage
 		}
+		User pass = userService.getUserInfo(login.getEmail());
+		userTemp = pass;
+		//to pass user information to other pages
+		User user = new User();
+		
+		model.addAttribute("user", user);
+		model.addAttribute("pass", pass);
+		
 		return "displaySummary";
 	}
 	
@@ -129,26 +133,42 @@ public class ControllerSOAP {
 		
 		return "redirect:/displayTransactions";	
 	}
-	
-	// populateFinances.jsp
-		@RequestMapping("/populateFinances")
-		public String populateFinances() {
-			return "populateFinances";
-		}
-	
 	// THIS COMMENT IS TO PRACTICE MY GITHUB PUSH
 	// populateFinances.jsp
 	@RequestMapping("/populateFinances")
-	public String populateFinances(@ModelAttribute("users") User user, Model m) 
+	public String populateFinances(@ModelAttribute("user") User user, Model m) 
 	{
+		if(modelAttribute == false) {//so that returning to displaySummary from displayTransactions does not cause an error
+			userTemp = userService.getUserInfo(user.getEmail()); // gets user based on the email they entered on landingPage
+		}
 		//User user = userService.getUser(4);
 		Financial financial = new Financial();
-		user.add(financial);
-		List<Financial> current = moneyService.getFinances(user.getUser_id());
+		userTemp.add(financial);
+		List<Financial> current = moneyService.getFinances(userTemp.getUser_id());
+		
+		java.util.Date uDate = new java.util.Date();
+		java.sql.Date date = new java.sql.Date(uDate.getTime());
+		
+		//time in months it will take if everything stays the same.If surplus is negative, 
+		int time = moneyService.getSavingsTime(date, userTemp);
+		
+		//get surplus amount
+		Double surplus = moneyService.getSurplus(userTemp.getUser_id());
+		System.out.println("***************surplus is = " + surplus);
 			
-		m.addAttribute("user", user);
+		m.addAttribute("user", userTemp);
 		m.addAttribute("financial", financial);
 		m.addAttribute("current", current);
+		m.addAttribute("surplus", surplus);
+		if(surplus == 0.0)
+		{
+			String noSurplus = "No Surplus Available";
+			m.addAttribute("time", noSurplus);
+		}
+		else
+		{
+			m.addAttribute("time", time);
+		}
 			
 		return "populateFinances";
 	}

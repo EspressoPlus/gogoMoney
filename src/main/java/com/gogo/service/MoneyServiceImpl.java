@@ -1,5 +1,6 @@
-package com.gogo.service;
+package main.java.com.gogo.service;
 
+import java.sql.Date;
 import java.util.ArrayList;
 
 import java.util.Arrays;
@@ -11,9 +12,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.gogo.dao.MoneyDAO;
-import com.gogo.entity.Financial;
-import com.gogo.entity.Outcome;
+import main.java.com.gogo.dao.MoneyDAO;
+import main.java.com.gogo.entity.Financial;
+import main.java.com.gogo.entity.User;
+
 
 
 
@@ -60,6 +62,74 @@ public class MoneyServiceImpl implements MoneyService {
 	
 	@Override
 	@Transactional
+	public int getSavingsTime(Date date, User user)
+	{
+		int i = 0;
+		List<Financial> income = moneyDAO.getIncomes(user.getUser_id());
+		List<Financial> outcome = moneyDAO.getOutcomes(user.getUser_id());
+		
+		Double inMonth = 0.00;
+		Double outMonth = 0.00;
+		
+		for(int j = 0; j < income.size();j++)
+		{
+			if(income.get(j).getTransaction_date().after(date))
+			{
+				inMonth = inMonth + income.get(j).getAmount();
+			}
+		}
+		
+		for(int j = 0; j < outcome.size();j++)
+		{
+			if(outcome.get(j).getTransaction_date().after(date))
+			{
+				outMonth = outMonth + outcome.get(j).getAmount();
+			}
+		}
+		
+		Double total = inMonth - outMonth;
+		Double save = user.getAmount_to_save();
+		Double mon = 0.0;
+		if(save%total>0.01)
+		{
+			Double t = (save/total) + 1;
+			i = t.intValue();
+		}
+		else
+		{
+			Double t = (save/total);
+			i = t.intValue();
+		}
+			
+		
+		return i;
+	}
+	
+	@Override
+	@Transactional
+	public Double getSurplus(int user_id)
+	{
+		Double income = 0.0;
+		Double outcome = 0.0;
+		
+		List<Financial> in = moneyDAO.getIncomes(user_id);
+		List<Financial> out = moneyDAO.getOutcomes(user_id);
+		
+		for(int i = 0; i < in.size(); i++)
+		{
+			income+=in.get(i).getAmount();
+		}
+		
+		for(int i = 0; i < out.size(); i++)
+		{
+			outcome+=out.get(i).getAmount();
+		}
+		
+		return income - outcome;
+	}
+	
+	@Override
+	@Transactional
 	public void saveFinances(Financial financial)
 	{
 		moneyDAO.saveFinances(financial);
@@ -95,13 +165,6 @@ public class MoneyServiceImpl implements MoneyService {
 
 	@Override
 	@Transactional
-	public void saveCategory(Category theCategory) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	@Transactional
 	public void deleteIncome(int id) {
 		moneyDAO.deleteIncome(id);
 		
@@ -112,13 +175,6 @@ public class MoneyServiceImpl implements MoneyService {
 	public void deleteOutcome(int id) {
 		moneyDAO.deleteOutcome(id);
 		
-		
-	}
-
-	@Override
-	@Transactional
-	public void deleteCategory(int id) {
-		// TODO Auto-generated method stub
 		
 	}
 }
