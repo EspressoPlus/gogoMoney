@@ -16,7 +16,8 @@
 
 	<%-- <form> --%>
 		<div>
-			<form:form action="/gogoMoney/displayTransactions" modelAttribute="user" method="post">
+			<%-- <form:form action="/gogoMoney/displayTransactions" modelAttribute="user" method="post"> --%>
+			<form:form action="displayTransactions" modelAttribute="user" method="post">
 				<input type="hidden" name="user_id" value="${pass.user_id}">
 				<input type="hidden" name="user_first_name" value="${pass.user_first_name}">
 				<input type="hidden" name="user_last_name" value="${pass.user_last_name}">
@@ -28,7 +29,8 @@
 			</form:form>
 		</div>
 		<div>
-			<form:form action="/gogoMoney/populateFinances" modelAttribute="user" method="post">
+			<%-- <form:form action="/gogoMoney/populateFinances" modelAttribute="user" method="post"> --%>
+			<form:form action="populateFinances" modelAttribute="user" method="post">
 				<input type="hidden" name="user_id" value="${pass.user_id}">
 				<input type="hidden" name="user_first_name" value="${pass.user_first_name}">
 				<input type="hidden" name="user_last_name" value="${pass.user_last_name}">
@@ -40,7 +42,8 @@
 			</form:form>
 		</div>
 		<div>
-			<form:form action="/gogoMoney" modelAttribute="user" method="post">
+			<%-- <form:form action="/gogoMoney" modelAttribute="user" method="post"> --%>
+			<form:form action="/gogo" modelAttribute="user" method="post">
 				<input type="submit" value="Login/Logout">
 			</form:form>
 		</div>

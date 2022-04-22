@@ -9,14 +9,17 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
 
-<!-- 
+	<!-- everyone else -->
 	<context:component-scan
-		base-package="main.java.com.gogo"> specific to my setup
+		base-package="com.gogo">
+	</context:component-scan>
+
+<!-- 
+	Darnell !!! 
+	<context:component-scan
+		base-package="main.java.com.gogo"> 
 	</context:component-scan>
 -->
-	<context:component-scan
-		base-package="main.java.com.gogo"> <!-- specific to my setup -->
-	</context:component-scan>
 	
 	<mvc:annotation-driven></mvc:annotation-driven>
 
@@ -32,8 +35,8 @@
 	<bean id="myDataSource"
 		class="com.mchange.v2.c3p0.ComboPooledDataSource">
 	<property name="driverClass" value="com.mysql.jdbc.Driver"></property>
-	<property name="user" value="hdstudent"></property>
-	<property name="password" value="hdstudent"></property>
+	<property name="user" value="gogo"></property>
+	<property name="password" value="gogo"></property>
 	<property name="jdbcUrl"
 		value="jdbc:mysql://localhost:3306/gogomoney04-01?useSSL=false"> <!-- the rest after false was stopping me from connecting -->
 	</property>
@@ -53,8 +56,9 @@
 	</property>
 -->
 	<property name="packagesToScan"
-		value="main.java.com.gogo">
+		value="com.gogo">
 	</property>
+	
 	<property name="hibernateProperties">
 		<props>
 			<prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</prop>

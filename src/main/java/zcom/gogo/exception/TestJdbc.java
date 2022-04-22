@@ -31,8 +31,8 @@ public class TestJdbc {
 //		}
 		
 		String jdbcUrl = "jdbc:mysql://localhost:3306/gogomoney04-01?useSSL=false";
-		String user = "root";
-		String pass="Simba8Appa";
+		String user = "gogo";
+		String pass="gogo";
 		try {
 			System.out.println("Connecting to database: "+jdbcUrl);
 			

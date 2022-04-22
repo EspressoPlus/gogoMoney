@@ -1,4 +1,4 @@
-package main.java.com.gogo.service;
+package com.gogo.service;
 
 import java.sql.Date;
 import java.util.List;
@@ -10,8 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import main.java.com.gogo.entity.Financial;
-import main.java.com.gogo.entity.User;
+import com.gogo.entity.Financial;
+import com.gogo.entity.User;
 
 
 

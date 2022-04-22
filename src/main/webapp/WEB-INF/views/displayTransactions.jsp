@@ -33,7 +33,8 @@ h2 {text-align: center;}
 <body>
 	<h1>This is the displayTransactions page. The transaction
 		spreadsheet page</h1>
-	<form:form action="/gogoMoney/displaySummary" modelAttribute="user" method="post">
+	<%-- <form:form action="/gogoMoney/displaySummary" modelAttribute="user" method="post"> --%>
+	<form:form action="displaySummary" modelAttribute="user" method="post">
 		<input type="hidden" name="user_id" value="${user.user_id}">
 		<input type="hidden" name="user_first_name" value="${user.user_first_name}">
 		<input type="hidden" name="user_last_name" value="${user.user_last_name}">

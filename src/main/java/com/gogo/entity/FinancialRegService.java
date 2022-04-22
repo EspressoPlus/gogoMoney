@@ -1,4 +1,4 @@
-package main.java.com.gogo.entity;
+package com.gogo.entity;
 
 import java.util.LinkedHashMap;
 import java.util.Map;

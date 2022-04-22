@@ -1,4 +1,4 @@
-package main.java.com.gogo.entity;
+package com.gogo.entity;
 
 import java.sql.Date;
 import javax.persistence.Column;
