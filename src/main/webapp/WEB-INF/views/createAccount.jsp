@@ -5,18 +5,42 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html>
-<body style="background-color:rgba(119,188,63,255);">
+
 <head>
 <meta charset="ISO-8859-1">
 <title>Create Account</title>
 <style>
+h1{
+border: 2px solid green;
+	border-radius: 8px;
+	padding: 50px;
+	width: 1000px;
+	height: 50px;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+	font-size: 200%;
+	background: #89DE5C;
+}
+body{
+	background-color: #D9F5CA;
+}
 table.center {
   margin-left: auto; 
   margin-right: auto;
   table-layout: fixed;
 }
+form{
+border-radius: 25px;
+  border: 2px solid #73AD21;
+  padding: 20px;
+  text-align: center;
+  margin-left: auto;
+	margin-right: auto;
+	padding: 100px;
+}
 
-h1 {
+h2 {
 	font-family: Arial;
 	text-align: center;
  }
@@ -26,7 +50,8 @@ td {
 </style>
 </head>
 <body>
-	<h1 style="color:white">Create your account!</h1>
+<h1>GoGoMoney</h1>
+	<h2 style="color:black">Create your account!</h2>
 	<form:form action="processAccount" modelAttribute="user" method="post">
 		
 		<table class=center>

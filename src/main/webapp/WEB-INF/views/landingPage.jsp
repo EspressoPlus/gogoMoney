@@ -8,13 +8,57 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Login</title>
+<style>
+h1{
+	border: 2px solid green;
+	border-radius: 8px;
+	padding: 50px;
+	width: 1000px;
+	height: 50px;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+	font-size: 230%;
+	background: #89DE5C;
+  
+}
+body{
+	background-color: #D9F5CA;
+}
+form{
+border-radius: 25px;
+  border: 2px solid #73AD21;
+  padding: 20px;
+  text-align: center;
+  margin-left: auto;
+	margin-right: auto;
+	padding: 100px;
+	background: #AAE888;
+}
+table{
+	 margin-left: auto;
+	margin-right: auto;
+	padding: 50px;
+	
+}
+h2{
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+	font-size: 200%;
+	
+}
+</style>
 </head>
 <body>
-<b>Login Page</b>
+<h1>GoGoMoney</h1>
+
 
 	<form method="post" action="displaySummary">
 		<c:set var="error" value="${error}"></c:set>
+		<h2>Login to Access Your GoGo Account</h2>
 		<table>
+		
 			<tr>
                         <td>Email</td>
                         <td><input type="text" name="email" required value=henry@gmail.com /></td>
@@ -37,16 +81,21 @@
                             &nbsp;&nbsp;
                             <input type="reset" value="Reset" />
                         </td>                        
-                    </tr>                    
+                    </tr> 
+                    <tr><td></td></tr>
+                    <tr>
+                    	<td>Or click create account!</td>
+                    	<td><a href="${pageContext.request.contextPath}/createAccount"
+				class="btn btn-primary btn-sm active" role="button"
+				aria-pressed="true">Create Account</a></td>
+                    </tr>                   
                 
             </table>
             
 	</form>
             
             <div>
-			<a href="${pageContext.request.contextPath}/createAccount"
-				class="btn btn-primary btn-sm active" role="button"
-				aria-pressed="true">/createAccount</a>
+			
 			<br><br>
 			<a href="${pageContext.request.contextPath}/displaySummary"
 				class="btn btn-primary btn-sm active" role="button"

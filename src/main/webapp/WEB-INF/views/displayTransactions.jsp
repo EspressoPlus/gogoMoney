@@ -16,9 +16,30 @@ table, th, td {
 	font-size: 150%;
 }
 
-tr:hover {
+body{
+	background-color: #D9F5CA;
+	text-align:center;
+}
+
+#hover:hover {
 	background-color: #a4f6fd;
 }
+h1{
+	border: 2px solid green;
+	border-radius: 8px;
+	padding: 50px;
+	width: 1000px;
+	height: 50px;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+	font-size: 200%;
+	background: #89DE5C;
+}
+p{
+	font-size: 200%;
+}
+
 </style>
 <style>
 h2 {text-align: center;}
@@ -31,8 +52,7 @@ h2 {text-align: center;}
 
 </head>
 <body>
-	<h1>This is the displayTransactions page. The transaction
-		spreadsheet page</h1>
+	<h1>Previous Transaction History</h1>
 	<%-- <form:form action="/gogoMoney/displaySummary" modelAttribute="user" method="post"> --%>
 	<form:form action="displaySummary" modelAttribute="user" method="post">
 		<input type="hidden" name="user_id" value="${user.user_id}">
@@ -47,7 +67,7 @@ h2 {text-align: center;}
 	
 	
 	
-	<p>${user.user_first_name} ${user.user_last_name}</p>
+	<p style="front-size: 200%">${user.user_first_name} ${user.user_last_name}</p>
 		<br>
 		<h2>Outcome</h2>
 		<table>
@@ -65,7 +85,7 @@ h2 {text-align: center;}
 				
 			</tr>
 			<c:forEach var="outcome" items="${outcome}">
-			<tr>
+			<tr id="hover">
 				<td>${outcome.name}</td>
 				<td>${outcome.amount}</td>
 				<td>${outcome.category}</td>
@@ -100,7 +120,7 @@ h2 {text-align: center;}
 				
 			</tr>
 			<c:forEach var="income" items="${income}">
-			<tr>
+			<tr id="hover">
 				<td>${income.name}</td>
 				<td>${income.amount}</td>
 				<td>${income.category}</td>
