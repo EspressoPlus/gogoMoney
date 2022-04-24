@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<%@ page import ="java.sql.*" %>
+	pageEncoding="ISO-8859-1"%>
+<%@ page import="java.sql.*"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%
     /* try{
@@ -29,11 +29,11 @@
 <title>Home</title>
 </head>
 <body>
-		<p>${user.user_first_name} ${user.user_last_name}</p>
-		<br>
-		<h5>Outcome</h5>
-		<table>
-			<c:forEach var="outcome" items="${outcome}">
+	<p>${user.user_first_name}${user.user_last_name}</p>
+	<br>
+	<h5>Outcome</h5>
+	<table>
+		<c:forEach var="outcome" items="${outcome}">
 			<tr>
 				<td>${outcome.name}</td>
 				<td>${outcome.amount}</td>
@@ -45,11 +45,11 @@
 				<td>${outcome.transaction_date}</td>
 				<td>${outcome.entry_date}</td>
 			</tr>
-			</c:forEach>
-		</table>
-		<h5>Income</h5>
-		<table>
-			<c:forEach var="income" items="${income}">
+		</c:forEach>
+	</table>
+	<h5>Income</h5>
+	<table>
+		<c:forEach var="income" items="${income}">
 			<tr>
 				<td>${income.name}</td>
 				<td>${income.amount}</td>
@@ -61,8 +61,8 @@
 				<td>${income.transaction_date}</td>
 				<td>${income.entry_date}</td>
 			</tr>
-			</c:forEach>
-		</table>
-	
+		</c:forEach>
+	</table>
+
 </body>
 </html>

@@ -10,9 +10,23 @@
 <meta charset="ISO-8859-1">
 <title>Populate Finances</title>
 <style>
-table, tr {
+p{
+font-weight: bold;
+}
+table {
 	text-align: center;
-	width: 75%
+	width: 200%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+input {
+	font-size: 80%;
+}
+
+tr {
+	text-align: center;
+	width: 100%;
 }
 
 td {
@@ -20,124 +34,164 @@ td {
 }
 
 th {
-	text-align: center;
+	text-align: left;
 	font-size: 110%;
 }
-.button{
-	text-align:center;
+
+.button {
+	text-align: center;
 }
 
-tr:hover {
+#hover:hover {
 	background-color: #a4f6fd;
 }
+
+h1 {
+	border: 2px solid green;
+	border-radius: 8px;
+	padding: 50px;
+	width: 1000px;
+	height: 50px;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+	font-size: 200%;
+	background: #89DE5C;
+}
+
+body {
+	background-color: #D9F5CA;
+	text-align: center;
+	font-size: 150%;
+}
 </style>
+
+<style><%@include file="/resources/css/styleBody.css"%></style>
+<style><%@include file="/resources/css/styleForm.css"%></style>
+<style><%@include file="/resources/css/styleTable.css"%></style>
 </head>
 <body>
 	<h1>Let's populate your Finances, ${user.user_first_name}</h1>
+	<p>Add and delete your recurring finances</p>
 	<%-- <form:form action="/gogoMoney/processUser/${user.user_id}" modelAttribute="financial" method="post"> --%>
-	<form:form action="processUser/${user.user_id}" modelAttribute="financial" method="post">
-			<table>
-				<tr>
-					<td> Current Balance <td>
-					<td> Savings Goal <td>
-					<td> Surplus </td>
-					<td> Months Until Goal </td>
-				</tr>
-				<tr>
-					<td><fmt:formatNumber value="${user.start_balance}" type="currency"/><td>
-					<td><fmt:formatNumber value="${user.amount_to_save}" type="currency"/><td>
-					<td><fmt:formatNumber value="${surplus}" type="currency"/></td>
-					<td>${time}</td>
-				</tr>
-			</table>
-			<br>
-			<p>Please Enter Bi-weekly or monthly income/expense and the day of month deposit</p>
-			<br>
-			<table>
+	<form:form action="processUser/${user.user_id}"
+		modelAttribute="financial" method="post">
+		<table>
 			<tr>
-				<td> Income or Expense? </td>
-				<td> Name </td>
-				<td> Amount $:  </td>
-				<td> Category </td>
-				<td> Recurrence </td>
-				<td> Interval:   (optional) </td>
-				<td> Day:  </td>
-				<td> How many recurrences:  (optional) </td>
-				<td> Transaction Date </td>
+				<th>Current Balance</th>
+				<th>
+				<th>Savings Goal</th>
+				<th>
+				<th>Surplus</th>
+				<th>Months Until Goal</th>
+			</tr>
+			<tr>
+				<td><fmt:formatNumber value="${user.start_balance}"
+						type="currency" />
+				<td>
+				<td><fmt:formatNumber value="${user.amount_to_save}"
+						type="currency" />
+				<td>
+				<td><fmt:formatNumber value="${surplus}" type="currency" /></td>
+				<td>${time}</td>
+			</tr>
+		</table>
+		<br>
+		<p>Please Enter Bi-weekly or monthly income/expense and the day of
+			month deposit</p>
+		<br>
+		<table>
+			<tr>
+				<th>Income or Expense?</th>
+				<th>Name</th>
+				<th>Amount $:</th>
+				<th>Category</th>
+				<th>Recurrence</th>
+				<th>Interval: (optional)</th>
+				<th>Day:</th>
+				<th>How many recurrences: (optional)</th>
+				<th>Transaction Date</th>
 			</tr>
 			<tr>
 				<td><form:select path="income_outcome">
-					<form:options items="${inOrOutList}"/>
-				</form:select></td>
-				<td><form:input path="name"/></td>
-				<td><form:input path="amount"/></td>
+						<form:options items="${inOrOutList}" />
+					</form:select></td>
+				<td><form:input path="name" /></td>
+				<td><form:input path="amount" /></td>
 				<td><form:select path="category">
-					<form:options items="${financeList}"/>
-				</form:select></td>
+						<form:options items="${financeList}" />
+					</form:select></td>
 				<td><form:select path="recurring">
-					<form:options items="${recurrList}"/>
-				</form:select></td>
+						<form:options items="${recurrList}" />
+					</form:select></td>
 				<td><form:select path="recur_interval">
-					<form:options items="${intervalList}"/>
-				</form:select></td>
-				<td><form:input path="recurr_day"/></td>
-				<td><form:input path="recurr_count"/></td>
-				<td><form:input path="transaction_date" type="date" pattern="yyyy-MM-dd"/></td>
+						<form:options items="${intervalList}" />
+					</form:select></td>
+				<td><form:input path="recurr_day" /></td>
+				<td><form:input path="recurr_count" /></td>
+				<td><form:input path="transaction_date" type="date"
+						pattern="yyyy-MM-dd" /></td>
 			</tr>
-			</table>
+		</table>
 		<br>
-				<input type="hidden" name="callingMap" value="populateFinances">
-				<input type="submit" value="Add Another" />
-				
+		<input type="hidden" name="callingMap" value="populateFinances">
+		<input type="submit" value="Add Another" />
+		<br>
+		<br>
 	</form:form>
-				<%-- <form:form action="/gogoMoney/displaySummary" modelAttribute="user" method="post"> --%>
-				<form:form action="displaySummary" modelAttribute="user" method="post">
-				<input type="hidden" name="user_id" value="${user.user_id}">
-				<input type="hidden" name="user_first_name" value="${user.user_first_name}">
-				<input type="hidden" name="user_last_name" value="${user.user_last_name}">
-				<input type="hidden" name="email" value="${user.email}">
-				<input type="hidden" name="password" value="${user.password}">
-				<input type="hidden" name="start_balance" value="${user.start_balance}">
-				<input type="hidden" name="amount_to_save" value="${user.amount_to_save}">
-				<input type="submit" value="Done">
-			</form:form>
+	<%-- <form:form action="/gogoMoney/displaySummary" modelAttribute="user" method="post"> --%>
+	<form:form action="displaySummary" modelAttribute="user" method="post">
+		<input type="hidden" name="user_id" value="${user.user_id}">
+		<input type="hidden" name="user_first_name"
+			value="${user.user_first_name}">
+		<input type="hidden" name="user_last_name"
+			value="${user.user_last_name}">
+		<input type="hidden" name="email" value="${user.email}">
+		<input type="hidden" name="password" value="${user.password}">
+		<input type="hidden" name="start_balance"
+			value="${user.start_balance}">
+		<input type="hidden" name="amount_to_save"
+			value="${user.amount_to_save}">
+		<input type="submit" value="Done">
+	</form:form>
 	<br>
 	<br>
 	<table>
 		<tr>
-			<td>Transaction Type</td>
-			<td>Name</td>
-			<td>Amount</td>
-			<td>Recurring?</td>
-			<td>Interval</td>
-			<td>Date</td>
-			<td>Number of Recurrences</td>
-			<td>Transaction Date</td>
-			<td>Entry Date</td>
-			<td> </td>
+			<th>Transaction Type</th>
+			<th>Name</th>
+			<th>Amount</th>
+			<th>Recurring?</th>
+			<th>Interval</th>
+			<th>Date</th>
+			<th>Number of Recurrences</th>
+			<th>Transaction Date</th>
+			<th>Entry Date</th>
+			<th></th>
 		</tr>
 		<c:forEach var="finance" items="${current}">
-		<tr>
-			<td>${finance.income_outcome}</td>
-			<td>${finance.name}</td>
-			<td>${finance.amount}</td>
-			<td>${finance.recurring}</td>
-			<td>${finance.recur_interval}</td>
-			<td>${finance.recurr_day}</td>
-			<td>${finance.recurr_count}</td>
-			<td>${finance.transaction_date}</td>
-			<td>${finance.entry_date}</td>
-			<%-- <td><form action="/gogoMoney/deleteFinance" method="post"> --%>
-			<td><form action="deleteFinance" method="post">
-				<input type="hidden" name="financial_id" value="${finance.financial_id}"/>
-				<input type="hidden" name="user_id" value="${user.user_id}"/>
-				<input type="submit" value="Delete">
-			</form>
-		</tr>
+			<tr id="hover">
+				<td>${finance.income_outcome}</td>
+				<td>${finance.name}</td>
+				<td>${finance.amount}</td>
+				<td>${finance.recurring}</td>
+				<td>${finance.recur_interval}</td>
+				<td>${finance.recurr_day}</td>
+				<td>${finance.recurr_count}</td>
+				<td>${finance.transaction_date}</td>
+				<td>${finance.entry_date}</td>
+				<%-- <td><form action="/gogoMoney/deleteFinance" method="post"> --%>
+				<td><form action="deleteFinance" method="post">
+						<input type="hidden" name="financial_id"
+							value="${finance.financial_id}" /> <input type="hidden"
+							name="user_id" value="${user.user_id}" /> <input type="submit"
+							value="Delete">
+					</form></td>
+			</tr>
 		</c:forEach>
 	</table>
 	<br>
 	<br>
-	
+
 </body>
 </html>
