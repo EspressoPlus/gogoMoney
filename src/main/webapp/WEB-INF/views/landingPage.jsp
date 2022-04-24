@@ -8,59 +8,144 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Login</title>
+<style>
+h1 {
+	border: 2px solid green;
+	border-radius: 8px;
+	padding: 50px;
+	width: 1000px;
+	height: 50px;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+	font-size: 230%;
+	background: #89DE5C;
+}
+
+body {
+	background-color: #D9F5CA;
+}
+
+form {
+	border-radius: 25px;
+	border: 2px solid #73AD21;
+	padding: 20px;
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 100px;
+	background: #AAE888;
+	font-size: 120%;
+}
+
+table {
+	margin-left: auto;
+	margin-right: auto;
+	padding: 50px;
+}
+
+h2 {
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+	font-size: 200%;
+}
+
+input[type=text], select {
+	width: 100%;
+	padding: 12px 20px;
+	margin: 8px 0;
+	display: inline-block;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	box-sizing: border-box;
+}
+
+input[type=password], select {
+	width: 100%;
+	padding: 12px 20px;
+	margin: 8px 0;
+	display: inline-block;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	box-sizing: border-box;
+}
+
+input[type=submit], select {
+	width: 100%;
+	padding: 12px 20px;
+	margin: 8px 0;
+	display: inline-block;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	box-sizing: border-box;
+	font-family: Arial;
+	cursor: pointer;
+}
+</style>
 </head>
 <body>
-<b>Login Page</b>
+	<h1>GoGoMoney</h1>
+
 
 	<form method="post" action="displaySummary">
 		<c:set var="error" value="${error}"></c:set>
+		<h2>Login to Access Your GoGo Account</h2>
 		<table>
+
 			<tr>
-                        <td>Email</td>
-                        <td><input type="text" name="email" required value=henry@gmail.com /></td>
-                    </tr>
-                    <tr>
-                        <td>Password</td>
-                        <td><input type="password" name="password" required value=bort /></td>
-                    </tr>
-                   	<c:choose>
-                   		<c:when test="${error==true}">
-                   			<tr>
-                   				<td></td>
-                   				<td style="color: red;">Invalid Email or Password</td>
-                   			</tr>
-                   		</c:when>
-                   	</c:choose>
-                    <tr>
-                    	<td></td>
-                        <td colspan="2" align="center"><input type="submit" value="Login" />
-                            &nbsp;&nbsp;
-                            <input type="reset" value="Reset" />
-                        </td>                        
-                    </tr>                    
-                
-            </table>
-            
+				<td>Email</td>
+				<td><input type="text" name="email" required
+					value=henry@gmail.com /></td>
+			</tr>
+			<tr>
+				<td>Password</td>
+				<td><input type="password" name="password" required value=bort /></td>
+			</tr>
+			<c:choose>
+				<c:when test="${error==true}">
+					<tr>
+						<td></td>
+						<td style="color: red;">Invalid Email or Password</td>
+					</tr>
+				</c:when>
+			</c:choose>
+			<tr>
+				<td></td>
+				<td colspan="2" align="center"><input type="submit"
+					value="Login" /> &nbsp;&nbsp; <input type="reset" value="Reset" />
+				</td>
+			</tr>
+			<tr>
+				<td></td>
+			</tr>
+			<tr>
+				<td>Or click create account!</td>
+				<td><a href="${pageContext.request.contextPath}/createAccount"
+					class="btn btn-primary btn-sm active" role="button"
+					aria-pressed="true">Create Account</a></td>
+			</tr>
+
+		</table>
+
 	</form>
-            
-            <div>
-			<a href="${pageContext.request.contextPath}/createAccount"
-				class="btn btn-primary btn-sm active" role="button"
-				aria-pressed="true">/createAccount</a>
-			<br><br>
-			<a href="${pageContext.request.contextPath}/displaySummary"
-				class="btn btn-primary btn-sm active" role="button"
-				aria-pressed="true">/displaySummary</a>
-			<br><br>
-			<a href="${pageContext.request.contextPath}/displayTransactions"
-				class="btn btn-primary btn-sm active" role="button"
-				aria-pressed="true">/displayTransactions</a>
-			<br><br>
-			<a href="${pageContext.request.contextPath}/populateFinances"
-				class="btn btn-primary btn-sm active" role="button"
-				aria-pressed="true">/populateFinances</a>
-			</div>
-        
+
+	<div>
+
+		<br>
+		<br> <a href="${pageContext.request.contextPath}/displaySummary"
+			class="btn btn-primary btn-sm active" role="button"
+			aria-pressed="true">/displaySummary</a> <br>
+		<br> <a
+			href="${pageContext.request.contextPath}/displayTransactions"
+			class="btn btn-primary btn-sm active" role="button"
+			aria-pressed="true">/displayTransactions</a> <br>
+		<br> <a
+			href="${pageContext.request.contextPath}/populateFinances"
+			class="btn btn-primary btn-sm active" role="button"
+			aria-pressed="true">/populateFinances</a>
+	</div>
+
 
 </body>
 </html>
