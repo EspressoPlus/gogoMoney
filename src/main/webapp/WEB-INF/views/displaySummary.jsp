@@ -15,18 +15,41 @@
 
 	<h1>Welcome ${pass.user_first_name}! This is home/displaySummary</h1>
 
-	Your GoGo Money left for the month: $ ${surplus}
-	<br><br><br>
+	Your remaining GoGo Money is:
+	<fmt:formatNumber value="${surplus}" type="currency"/>
+	<br><br>
 	
-	<table>
+	<form:form action="processUser/${user.user_id}" modelAttribute="financial" method="post">
+	Enter a new transaction:
+ 	<table>
 		<tr>
-			<td><fmt:formatNumber value="${user.start_balance}" type="currency"/><td>
-			<td><fmt:formatNumber value="${user.amount_to_save}" type="currency"/><td>
-			<td><fmt:formatNumber value="${surplus}" type="currency"/></td>
-			<td>${time}</td>
+			<td> Amount $:  </td>
+			<td> Name </td>
+			<td> Category </td>
+			<td> Income or Expense? </td>
+		</tr>
+		<tr>
+			<td><form:input path="amount"/></td>
+			<td><form:input path="name"/></td>
+			<td><form:select path="category">
+				<form:options items="${financeList}"/>
+			</form:select></td>
+			<td><form:select path="income_outcome">
+				<form:options items="${inOrOutList}"/>
+			</form:select></td>
 		</tr>
 	</table>
+	<br>
+	<input type="hidden" name="callingMap" value="displaySummary">
+	<input type="submit" value="Add Another" />
+
+	</form:form>
 	
+	
+	<br><br><br>
+	
+
+ 	
 	<br><br><br>
 
 

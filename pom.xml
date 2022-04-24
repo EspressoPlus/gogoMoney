@@ -23,6 +23,10 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/x
     </plugins>
   </build>
   
+  <properties>
+      <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+  
   <dependencies>
 		
 		<!-- https://mvnrepository.com/artifact/org.springframework/spring-webmvc -->
