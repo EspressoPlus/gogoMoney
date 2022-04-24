@@ -135,9 +135,9 @@ input[type=submit], select {
 								class="btn btn-primary btn-sm active" value="Add User"></td>
 						</tr>
 					</table></td>
-				<td><img
-					src=file:///C:/Users/dager/Desktop/GoGoMoney/gogoMoney-main/src/main/webapp/WEB-INF/images/money%20logo%202.PNG
-					style="width: 275px; height: 180px;"></td>
+				<td>
+					<!-- src=file:///C:/Users/dager/Desktop/GoGoMoney/gogoMoney-main/src/main/webapp/WEB-INF/images/money%20logo%202.PNG -->
+					<img src='${pageContext.request.contextPath}/images/money%20logo%202.PNG' style="width: 300px; height: 300px;"></td>
 			</tr>
 		</table>
 		<div class="form-group-row"></div>
@@ -145,5 +145,8 @@ input[type=submit], select {
 
 
 	</form:form>
+	
+	${pageContext.request.contextPath}
+	
 </body>
 </html>

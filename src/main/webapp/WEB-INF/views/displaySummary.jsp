@@ -61,7 +61,7 @@ var chart = new CanvasJS.Chart("chartContainer", {
 		type: "doughnut",
 		yValueFormatString: "$#,##0.00",
 		indexLabel: "{category}: {y}",
-		toolTipContent: "{y} ",
+		toolTipContent: "{y}",
 		dataPoints : <%out.print(dataPoints);%>
 	}]
 });
