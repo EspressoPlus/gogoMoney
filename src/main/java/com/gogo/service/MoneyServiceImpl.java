@@ -4,8 +4,9 @@ import java.sql.Date;
 import java.util.ArrayList;
 
 import java.util.Arrays;
-
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.gogo.dao.MoneyDAO;
 import com.gogo.entity.Financial;
+import com.gogo.entity.FinancialRegService;
 import com.gogo.entity.User;
 
 
@@ -24,6 +26,8 @@ public class MoneyServiceImpl implements MoneyService {
 
 	@Autowired
 	private MoneyDAO moneyDAO;
+	@Autowired
+	private FinancialRegService finRegSrv;
 	
 	@Override
 	@Transactional
@@ -58,6 +62,37 @@ public class MoneyServiceImpl implements MoneyService {
 	public Financial getFinance(int user_id)
 	{
 		return moneyDAO.getFinance(user_id);
+	}
+	
+	@Override
+	@Transactional
+	public HashMap<String,Double> getSpendingByCategory(int user_id) {
+	//public HashMap<Integer,Double> getSpendingByCategory(int user_id) {
+		
+		List<Financial> spending = moneyDAO.getOutcomes(user_id);  // get all spending
+		
+		// use accumulator pattern to summarize by category
+		// this is so much easier in Python !!!
+		// https://stackoverflow.com/a/36554525
+		HashMap<Integer,Double> iMap = new HashMap<Integer,Double>();
+		for (Financial f : spending) {
+			int category = f.getCategory();
+			//double amount = f.getAmount();
+			double amount = iMap.containsKey(category) ? iMap.get(category) : 0;
+			amount += f.getAmount();
+			iMap.put(category, amount);
+		}
+		
+		// convert category integer code to real category description
+		HashMap<String,Double> sMap  = new HashMap<String,Double>();
+		Map<Integer,String> catMap = finRegSrv.populateCategory();
+		for (Integer i : iMap.keySet()) {
+			String cat = catMap.get(i);   // get category string from catMap
+			sMap.put(cat,iMap.get(i));    // write name and value to sMap
+		}
+		
+		//return moneyDAO.getOutcomes(user_id);
+		return sMap;
 	}
 	
 	@Override

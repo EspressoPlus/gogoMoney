@@ -1,8 +1,7 @@
 package com.gogo.controller;
 
 import java.util.ArrayList;
-
-
+import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -118,14 +117,19 @@ public class ControllerSOAP {
 		//Financial financial = new Financial();
 		//userTemp.add(financial);
 		System.out.println("*** displaySummary financial: " + f);
-		List<Financial> current = moneyService.getFinancesCurrent(userTemp.getUser_id());
+		//List<Financial> current = moneyService.getFinancesCurrent(userTemp.getUser_id());
+		
+		// need to change this to limit to one / current month ???
+		//List<Financial> spending = moneyService.getOutcomes(userTemp.getUser_id());
+		HashMap<String,Double> spending = moneyService.getSpendingByCategory(userTemp.getUser_id());
 		
 		
 		//get surplus amount
 		Double surplus = moneyService.getSurplus(userTemp.getUser_id());
 		System.out.println("*** displaySummary surplus : " + surplus);
 		m.addAttribute("surplus", surplus);
-		m.addAttribute("current", current);
+		//m.addAttribute("current", current);
+		m.addAttribute("spending", spending);
 		m.addAttribute("financial", f);
 		
 		

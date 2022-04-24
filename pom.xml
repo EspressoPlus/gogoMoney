@@ -28,6 +28,15 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/x
   </properties>
   
   <dependencies>
+  
+		<!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
+		<!-- needed for displaySummary.jsp -->
+		<!-- https://canvasjs.com/jsp-charts/doughnut-chart/ -->
+		<dependency>
+		    <groupId>com.google.code.gson</groupId>
+		    <artifactId>gson</artifactId>
+		    <version>2.9.0</version>
+		</dependency>
 		
 		<!-- https://mvnrepository.com/artifact/org.springframework/spring-webmvc -->
 		<dependency>
