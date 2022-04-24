@@ -10,20 +10,23 @@
 <meta charset="ISO-8859-1">
 <title>Populate Finances</title>
 <style>
+p{
+font-weight: bold;
+}
 table {
 	text-align: center;
-	width: 75%;
+	width: 200%;
 	margin-left: auto;
 	margin-right: auto;
-	
 }
-input{
-font-size: 80%;
+
+input {
+	font-size: 80%;
 }
 
 tr {
 	text-align: center;
-	width: 75%;
+	width: 100%;
 }
 
 td {
@@ -33,7 +36,6 @@ td {
 th {
 	text-align: left;
 	font-size: 110%;
-	
 }
 
 .button {
@@ -60,22 +62,28 @@ h1 {
 body {
 	background-color: #D9F5CA;
 	text-align: center;
+	font-size: 150%;
 }
 </style>
+
+<style><%@include file="/resources/css/styleBody.css"%></style>
+<style><%@include file="/resources/css/styleForm.css"%></style>
+<style><%@include file="/resources/css/styleTable.css"%></style>
 </head>
 <body>
 	<h1>Let's populate your Finances, ${user.user_first_name}</h1>
+	<p>Add and delete your recurring finances</p>
 	<%-- <form:form action="/gogoMoney/processUser/${user.user_id}" modelAttribute="financial" method="post"> --%>
 	<form:form action="processUser/${user.user_id}"
 		modelAttribute="financial" method="post">
 		<table>
 			<tr>
-				<td>Current Balance
-				<td>
-				<td>Savings Goal
-				<td>
-				<td>Surplus</td>
-				<td>Months Until Goal</td>
+				<th>Current Balance</th>
+				<th>
+				<th>Savings Goal</th>
+				<th>
+				<th>Surplus</th>
+				<th>Months Until Goal</th>
 			</tr>
 			<tr>
 				<td><fmt:formatNumber value="${user.start_balance}"
@@ -94,15 +102,15 @@ body {
 		<br>
 		<table>
 			<tr>
-				<td>Income or Expense?</td>
-				<td>Name</td>
-				<td>Amount $:</td>
-				<td>Category</td>
-				<td>Recurrence</td>
-				<td>Interval: (optional)</td>
-				<td>Day:</td>
-				<td>How many recurrences: (optional)</td>
-				<td>Transaction Date</td>
+				<th>Income or Expense?</th>
+				<th>Name</th>
+				<th>Amount $:</th>
+				<th>Category</th>
+				<th>Recurrence</th>
+				<th>Interval: (optional)</th>
+				<th>Day:</th>
+				<th>How many recurrences: (optional)</th>
+				<th>Transaction Date</th>
 			</tr>
 			<tr>
 				<td><form:select path="income_outcome">
@@ -128,7 +136,8 @@ body {
 		<br>
 		<input type="hidden" name="callingMap" value="populateFinances">
 		<input type="submit" value="Add Another" />
-
+		<br>
+		<br>
 	</form:form>
 	<%-- <form:form action="/gogoMoney/displaySummary" modelAttribute="user" method="post"> --%>
 	<form:form action="displaySummary" modelAttribute="user" method="post">
@@ -148,7 +157,7 @@ body {
 	<br>
 	<br>
 	<table>
-		<tr id="boarderTH">
+		<tr>
 			<th>Transaction Type</th>
 			<th>Name</th>
 			<th>Amount</th>
@@ -158,7 +167,7 @@ body {
 			<th>Number of Recurrences</th>
 			<th>Transaction Date</th>
 			<th>Entry Date</th>
-			<td></td>
+			<th></th>
 		</tr>
 		<c:forEach var="finance" items="${current}">
 			<tr id="hover">
@@ -177,7 +186,7 @@ body {
 							value="${finance.financial_id}" /> <input type="hidden"
 							name="user_id" value="${user.user_id}" /> <input type="submit"
 							value="Delete">
-					</form>
+					</form></td>
 			</tr>
 		</c:forEach>
 	</table>

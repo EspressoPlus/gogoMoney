@@ -34,6 +34,9 @@ table {
 	padding: 50px;
 	font-size: 120%;
 }
+#buttons{
+	text-align: center;
+}
 
 #gogoAmount {
 	border-radius: 25px;
@@ -46,31 +49,36 @@ table {
 	text-align: center;
 	font-size: 200%;
 }
-p{
+
+p {
 	font-size: 150%;
 }
 </style>
+<style><%@include file="/resources/css/styleBody.css"%></style>
+<style><%@include file="/resources/css/styleForm.css"%></style>
+<style><%@include file="/resources/css/styleTable.css"%></style>
 </head>
 <body>
 
 	<h1>Welcome ${pass.user_first_name}!</h1>
 
-	
-		<p>Your remaining GoGo Money is:<p>
-		<p id="gogoAmount">
+
+	<p>Your remaining GoGo Money is:
+	<p>
+	<p id="gogoAmount">
 		<fmt:formatNumber value="${surplus}" type="currency" />
 	</p>
 	<br>
 
 	<form:form action="processUser/${user.user_id}"
 		modelAttribute="financial" method="post">
-	<p>Enter a new transaction:</p>
- 	<table>
+		<p>Enter a new small transaction:</p>
+		<table>
 			<tr>
-				<td>Amount $:</td>
-				<td>Name</td>
-				<td>Category</td>
-				<td>Income or Expense?</td>
+				<th>Amount $:</th>
+				<th>Name</th>
+				<th>Category</th>
+				<th>Income or Expense?</th>
 			</tr>
 			<tr>
 				<td><form:input path="amount" /></td>
@@ -81,22 +89,23 @@ p{
 				<td><form:select path="income_outcome">
 						<form:options items="${inOrOutList}" />
 					</form:select></td>
-				<td><input type="hidden" name="callingMap" value="displaySummary">
-		<input type="submit" value="Submit and Add Another" /></td>
+				<td><input type="hidden" name="callingMap"
+					value="displaySummary"> <input type="submit"
+					value="Submit and Add Another" /></td>
 			</tr>
 		</table>
-		
-		
+
+
 
 	</form:form>
 
 
-	
+
 	<br>
 
 	<table>
 		<tr>
-			<th>
+			<td>
 				<%-- <form> --%>
 				<div>
 					<%-- <form:form action="/gogoMoney/displayTransactions" modelAttribute="user" method="post"> --%>
@@ -116,9 +125,9 @@ p{
 						<input type="submit" value="Transaction History">
 					</form:form>
 				</div>
-			</th>
+			</td>
 
-			<th>
+			<td>
 				<div>
 					<%-- <form:form action="/gogoMoney/populateFinances" modelAttribute="user" method="post"> --%>
 					<form:form action="populateFinances" modelAttribute="user"
@@ -134,19 +143,19 @@ p{
 							value="${pass.start_balance}">
 						<input type="hidden" name="amount_to_save"
 							value="${pass.amount_to_save}">
-						<input type="submit" value="Finances">
+						<input type="submit" value="Recurring Finances">
 					</form:form>
 				</div>
-			</th>
+			</td>
 
-			<th>
+			<td id="buttons">
 				<div>
 					<%-- <form:form action="/gogoMoney" modelAttribute="user" method="post"> --%>
 					<form:form action="/gogo" modelAttribute="user" method="post">
 						<input type="submit" value="Logout">
 					</form:form>
 				</div>
-			</th>
+			</td>
 		</tr>
 	</table>
 	<br>

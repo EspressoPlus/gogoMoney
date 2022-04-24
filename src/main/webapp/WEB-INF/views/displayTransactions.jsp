@@ -13,18 +13,19 @@ table, th, td {
 	text-align: center;
 	margin-left: auto;
 	margin-right: auto;
-	font-size: 150%;
+	font-size: 120%;
 }
 
-body{
+body {
 	background-color: #D9F5CA;
-	text-align:center;
+	text-align: center;
 }
 
 #hover:hover {
 	background-color: #a4f6fd;
 }
-h1{
+
+h1 {
 	border: 2px solid green;
 	border-radius: 8px;
 	padding: 50px;
@@ -36,55 +37,62 @@ h1{
 	font-size: 200%;
 	background: #89DE5C;
 }
-p{
+
+p {
 	font-size: 200%;
 }
-
 </style>
 <style>
-h2 {text-align: center;}
+h2 {
+	text-align: center;
+}
 </style>
-
 <style><%@include file="/resources/css/styleBody.css"%></style>
 <style><%@include file="/resources/css/styleForm.css"%></style>
 <style><%@include file="/resources/css/styleTable.css"%></style>
 
-
 </head>
 <body>
 	<h1>Previous Transaction History</h1>
+	
 	<%-- <form:form action="/gogoMoney/displaySummary" modelAttribute="user" method="post"> --%>
 	<form:form action="displaySummary" modelAttribute="user" method="post">
 		<input type="hidden" name="user_id" value="${user.user_id}">
-		<input type="hidden" name="user_first_name" value="${user.user_first_name}">
-		<input type="hidden" name="user_last_name" value="${user.user_last_name}">
+		<input type="hidden" name="user_first_name"
+			value="${user.user_first_name}">
+		<input type="hidden" name="user_last_name"
+			value="${user.user_last_name}">
 		<input type="hidden" name="email" value="${user.email}">
 		<input type="hidden" name="password" value="${user.password}">
-		<input type="hidden" name="start_balance" value="${user.start_balance}">
-		<input type="hidden" name="amount_to_save" value="${user.amount_to_save}">
+		<input type="hidden" name="start_balance"
+			value="${user.start_balance}">
+		<input type="hidden" name="amount_to_save"
+			value="${user.amount_to_save}">
 		<input type="submit" value="Home">
 	</form:form>
-	
-	
-	
-	<p style="front-size: 200%">${user.user_first_name} ${user.user_last_name}</p>
-		<br>
-		<h2>Outcome</h2>
-		<table>
-			<tr>
-				<th>Name</th>
-				<th>Amount</th>
-				<th>Category</th>
-				<th>Recurring</th>
-				<th>Recur Interval</th>
-				<th>Recur Day</th>
-				<th>Recur Count</th>
-				<th>Transaction Date</th>
-				<th>Entry Date</th>
-				<th></th>
-				
-			</tr>
-			<c:forEach var="outcome" items="${outcome}">
+
+
+
+	<p style="front-size: 200%">${user.user_first_name}
+		${user.user_last_name}</p>
+	<br>
+	<p>If you incorrectly entered in a transaction, delete it here and reenter it on the home page!</p>
+	<h2>Outcome</h2>
+	<table>
+		<tr>
+			<th>Name</th>
+			<th>Amount</th>
+			<th>Category</th>
+			<th>Recurring</th>
+			<th>Recur Interval</th>
+			<th>Recur Day</th>
+			<th>Recur Count</th>
+			<th>Transaction Date</th>
+			<th>Entry Date</th>
+			<th></th>
+
+		</tr>
+		<c:forEach var="outcome" items="${outcome}">
 			<tr id="hover">
 				<td>${outcome.name}</td>
 				<td>${outcome.amount}</td>
@@ -95,31 +103,32 @@ h2 {text-align: center;}
 				<td>${outcome.recurr_count}</td>
 				<td>${outcome.transaction_date}</td>
 				<td>${outcome.entry_date}</td>
-				<td>
-				<form:form action="${pageContext.request.contextPath}/deleteTransaction" method="post">
-						<input type="hidden" name="incomeId" value="${outcome.financial_id}" />
+				<td><form:form
+						action="${pageContext.request.contextPath}/deleteTransaction"
+						method="post">
+						<input type="hidden" name="incomeId"
+							value="${outcome.financial_id}" />
 						<input type="submit" value="Delete" />
-				</form:form>
-				</td>
+					</form:form></td>
 			</tr>
-			</c:forEach>
-		</table>
-		<h2>Income</h2>
-		<table>
+		</c:forEach>
+	</table>
+	<h2>Income</h2>
+	<table>
 		<tr>
-				<th>Name</th>
-				<th>Amount</th>
-				<th>Category</th>
-				<th>Recurring</th>
-				<th>Recur Interval</th>
-				<th>Recur Day</th>
-				<th>Recur Count</th>
-				<th>Transaction Date</th>
-				<th>Entry Date</th>
-				<th></th>
-				
-			</tr>
-			<c:forEach var="income" items="${income}">
+			<th>Name</th>
+			<th>Amount</th>
+			<th>Category</th>
+			<th>Recurring</th>
+			<th>Recur Interval</th>
+			<th>Recur Day</th>
+			<th>Recur Count</th>
+			<th>Transaction Date</th>
+			<th>Entry Date</th>
+			<th></th>
+
+		</tr>
+		<c:forEach var="income" items="${income}">
 			<tr id="hover">
 				<td>${income.name}</td>
 				<td>${income.amount}</td>
@@ -130,18 +139,19 @@ h2 {text-align: center;}
 				<td>${income.recurr_count}</td>
 				<td>${income.transaction_date}</td>
 				<td>${income.entry_date}</td>
-				<td>
-				<form:form action="${pageContext.request.contextPath}/deleteTransaction" method="post">
-						<input type="hidden" name="outcomeId" value="${income.financial_id}" />
+				<td><form:form
+						action="${pageContext.request.contextPath}/deleteTransaction"
+						method="post">
+						<input type="hidden" name="outcomeId"
+							value="${income.financial_id}" />
 						<input type="submit" value="Delete" />
-				</form:form>
-				</td>
+					</form:form></td>
 			</tr>
-			</c:forEach>
-		</table>
-		
-		
-			
-	
+		</c:forEach>
+	</table>
+
+
+
+
 </body>
 </html>
