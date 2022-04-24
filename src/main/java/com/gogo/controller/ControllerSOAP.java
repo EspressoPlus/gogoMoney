@@ -5,6 +5,8 @@ import java.util.ArrayList;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -94,9 +96,13 @@ public class ControllerSOAP {
 		return "redirect:/populateFinances";
 	}
 	
+	// VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
+	// ####### CLAYTON !!!!!!!!!! LOOK HERE #######
 	// displaySummary.jsp
 	@RequestMapping("/displaySummary")
-	public String displaySummary(@ModelAttribute("user") User login, Model m) {
+	public String displaySummary(Model m, @ModelAttribute("user") User login, 
+			@ModelAttribute("financial") Financial f) {
+		
 		if(modelAttribute == false) {//so that returning to displaySummary from displayTransactions does not cause an error
 			userTemp = userService.getUserInfo(login.getEmail()); // gets user based on the email they entered on landingPage
 		}
@@ -108,13 +114,26 @@ public class ControllerSOAP {
 		m.addAttribute("user", user);
 		m.addAttribute("pass", pass);
 		
+		// bring in Financial object
+		//Financial financial = new Financial();
+		//userTemp.add(financial);
+		System.out.println("*** displaySummary financial: " + f);
+		List<Financial> current = moneyService.getFinancesCurrent(userTemp.getUser_id());
+		
+		
 		//get surplus amount
 		Double surplus = moneyService.getSurplus(userTemp.getUser_id());
 		System.out.println("*** displaySummary surplus : " + surplus);
 		m.addAttribute("surplus", surplus);
+		m.addAttribute("current", current);
+		m.addAttribute("financial", f);
+		
 		
 		return "displaySummary";
 	}
+	// ####### CLAYTON !!!!!!!!!! LOOK HERE #######
+	// AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
 	
 	// displayTransactions.jsp
 	@RequestMapping("/displayTransactions")
@@ -179,17 +198,30 @@ public class ControllerSOAP {
 	
 	//adds the financial line to table
 	@RequestMapping("/processUser/{user_Id}")
-	public String processUser(@PathVariable int user_Id, @ModelAttribute("financial") Financial financial, Model m)
+	public String processUser(@PathVariable int user_Id, 
+			@ModelAttribute("financial") Financial financial,
+			@ModelAttribute("callingMap") String callingMap,
+			RedirectAttributes r)
 	{
-		User use = userService.getUser(user_Id);
-		financial.setUser(use);
+		User user = userService.getUser(user_Id);
+		financial.setUser(user);
 	
 		java.util.Date uDate = new java.util.Date();
 		java.sql.Date date = new java.sql.Date(uDate.getTime());
 		financial.setEntry_date(date);
 		moneyService.saveFinances(financial);
 		
-		return "redirect:/populateFinances";
+		r.addFlashAttribute("user",user);
+		
+		System.out.println("*** processUser callingMap: " + callingMap);
+		
+		if (callingMap.equals("populateFinances")) { // populateFinaces.jsp: <input type="hidden" name="callingMap" value="populateFinances">
+			System.out.println("*** processUser redirecting to /populateFinances");
+			return "redirect:/populateFinances";
+		} else {
+			System.out.println("*** processUser redirecting to /displaySummary");
+			return "redirect:/displaySummary";
+		}
 	}
 	
 	//deletes row of finance

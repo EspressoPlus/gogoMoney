@@ -86,6 +86,7 @@ tr:hover {
 			</tr>
 			</table>
 		<br>
+				<input type="hidden" name="callingMap" value="populateFinances">
 				<input type="submit" value="Add Another" />
 				
 	</form:form>

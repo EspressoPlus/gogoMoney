@@ -17,11 +17,11 @@
 		<table>
 			<tr>
                         <td>Email</td>
-                        <td><input type="text" name="email" required/></td>
+                        <td><input type="text" name="email" required value=henry@gmail.com /></td>
                     </tr>
                     <tr>
                         <td>Password</td>
-                        <td><input type="password" name="password" required/></td>
+                        <td><input type="password" name="password" required value=bort /></td>
                     </tr>
                    	<c:choose>
                    		<c:when test="${error==true}">
