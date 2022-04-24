@@ -36,28 +36,28 @@ td {
 						<tr>
 							<td style="font-family: verdana" ;style="color:white"><b>Enter
 								First Name</b></td>
-							<td><input type="text" name="user_first_name" required></td>
+							<td><input type="text" name="user_first_name" required value=John></td>
 						</tr>
 						<tr>
 							<td style="font-family: Arial" ;style="color:white"><b>Enter
 								Last Name<b></td>
-							<td><input type="text" name="user_last_name" required></td>
+							<td><input type="text" name="user_last_name" required value=Doe></td>
 						</tr>
 						<tr>
 							<td style="font-family: Arial" ;style="color:white"><b>Email<b></td>
-							<td><input type="text" name="email" required></td>
+							<td><input type="text" name="email" required value=jd@jd.com></td>
 						</tr>
 						<tr>
 							<td style="font-family: Arial" ;style="color:white"><b>Password<b></td>
-							<td><input type="password" name="password" required></td>
+							<td><input type="password" name="password" required value=bort></td>
 						</tr>
 						<tr>
 							<td style="font-family: Arial" ;style="color:white"><b>Current Bank Account Balance<b></td>
-							<td><input type="text" name="start_balance" required></td>
+							<td><input type="text" name="start_balance" required value=2200></td>
 						</tr>
 						<tr>
 							<td style="font-family: Arial" ;style="color:white"><b>Total To Be Saved<b></td>
-							<td><input type="text" name="amount_to_save" required></td>
+							<td><input type="text" name="amount_to_save" required value=1500></td>
 						</tr>
 						<tr>
 							<td></td>
