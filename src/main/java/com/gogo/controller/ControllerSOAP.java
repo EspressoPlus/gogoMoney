@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.gogo.entity.Financial;
 import com.gogo.entity.FinancialRegService;
@@ -83,17 +84,19 @@ public class ControllerSOAP {
 	}
 	
 	@RequestMapping("/processAccount")
-	public String processAccount(@ModelAttribute("user") User user, Model m)
+	public String processAccount(@ModelAttribute("user") User user, RedirectAttributes r)
 	{
 		userService.createUser(user);
+		System.out.println("********* processAccount email: " + user.getEmail());
 		userTemp = userService.getUserInfo(user.getEmail());
 		
+		r.addFlashAttribute("user", user);  // allows entire user object to be added
 		return "redirect:/populateFinances";
 	}
 	
 	// displaySummary.jsp
 	@RequestMapping("/displaySummary")
-	public String displaySummary(@ModelAttribute("user") User login, Model model) {
+	public String displaySummary(@ModelAttribute("user") User login, Model m) {
 		if(modelAttribute == false) {//so that returning to displaySummary from displayTransactions does not cause an error
 			userTemp = userService.getUserInfo(login.getEmail()); // gets user based on the email they entered on landingPage
 		}
@@ -102,8 +105,13 @@ public class ControllerSOAP {
 		//to pass user information to other pages
 		User user = new User();
 		
-		model.addAttribute("user", user);
-		model.addAttribute("pass", pass);
+		m.addAttribute("user", user);
+		m.addAttribute("pass", pass);
+		
+		//get surplus amount
+		Double surplus = moneyService.getSurplus(userTemp.getUser_id());
+		System.out.println("*** displaySummary surplus : " + surplus);
+		m.addAttribute("surplus", surplus);
 		
 		return "displaySummary";
 	}
@@ -133,7 +141,7 @@ public class ControllerSOAP {
 		
 		return "redirect:/displayTransactions";	
 	}
-	// THIS COMMENT IS TO PRACTICE MY GITHUB PUSH
+
 	// populateFinances.jsp
 	@RequestMapping("/populateFinances")
 	public String populateFinances(@ModelAttribute("user") User user, Model m) 

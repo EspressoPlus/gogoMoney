@@ -69,6 +69,7 @@ public class UserDAOImpl implements UserDAO {
 	@Override 
 	public User getUserInfo(String email)
 	{
+		System.out.println("********* UserDAOImpl email: " + email);
 		Session session = sessionFactory.getCurrentSession();
 		Query<User> query = session.createQuery("from User where email like :email", User.class);
 		

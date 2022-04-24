@@ -62,6 +62,7 @@ public class UserServiceImpl implements UserService {
 	@Transactional
 	public User getUserInfo(String email) 
 	{
+		System.out.println("********* UserServiceImpl email: " + email);
 		return userDAO.getUserInfo(email);
 	}
 
