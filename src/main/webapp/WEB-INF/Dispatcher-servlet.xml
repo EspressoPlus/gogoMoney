@@ -27,6 +27,9 @@
 
 	<mvc:resources mapping="/resources/**"
 		location="/resources/"></mvc:resources>
+	
+	<mvc:resources mapping="/images/**"
+		location="/WEB-INF/images/"></mvc:resources>
 
 	<bean id="myDataSource"
 		class="com.mchange.v2.c3p0.ComboPooledDataSource">

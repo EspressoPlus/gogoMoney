@@ -1,6 +1,8 @@
 package com.gogo.service;
 
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 
@@ -50,4 +52,6 @@ public interface MoneyService {
 	public void deleteIncome(int id);
 	
 	public void deleteOutcome(int id);
+	
+	public HashMap<String,Double> getSpendingByCategory(int user_id);
 }
