@@ -54,7 +54,8 @@ public class MoneyServiceImpl implements MoneyService {
 	@Transactional
 	public List<Financial> getFinancesCurrent(int user_id)
 	{
-		return moneyDAO.getFinances(user_id);
+		//return moneyDAO.getFinances(user_id);
+		return moneyDAO.getFinancesCurrent(user_id);
 	}
 	
 	@Override
@@ -166,22 +167,23 @@ public class MoneyServiceImpl implements MoneyService {
 		List<Financial> in = moneyDAO.getIncomes(user_id);
 		List<Financial> out = moneyDAO.getOutcomes(user_id);
 		
+		
 		//only add the recurring amounts
 		for(int i = 0; i < in.size(); i++)
 		{
-			if(in.get(i).getRecurring().equals("TRUE"))
-			{
+			//if(in.get(i).getRecurring().equals("TRUE"))
+			//{
 				income+=in.get(i).getAmount();
-			}
+			//}
 		}
 		
 		//only add the recurring amounts
 		for(int i = 0; i < out.size(); i++)
 		{
-			if(out.get(i).getRecurring().equals("TRUE"))
-			{
+			//if(out.get(i).getRecurring().equals("TRUE"))
+			//{
 				outcome+=out.get(i).getAmount();
-			}
+			//}
 		}
 		
 		return income - outcome; //surplus amount

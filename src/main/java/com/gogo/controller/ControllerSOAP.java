@@ -38,12 +38,14 @@ public class ControllerSOAP {
 	// login -> /displaySummary
 	// create -> /createAcct
 	@RequestMapping("/")
-	public String landingPage(Model m) {
+	public String landingPage(Model m, @ModelAttribute(name="invalidUser") String errMsg ) {
 		//List<User> users = userService.getUsers(); //to add customer email and password to model
 		Boolean error = false; //hides the "invalid email and password" error message ***See validate method***
 		User user = new User();
 		m.addAttribute("user", user);
 		m.addAttribute("error", error);
+		m.addAttribute("errMsg", errMsg);
+		System.out.println("********* landingPage errMsg: " + errMsg);
 		
 		return "landingPage"; // redirect to the summary instead of validate which I commented out below for now
 	}
@@ -51,6 +53,7 @@ public class ControllerSOAP {
 	 @RequestMapping("/validate") 
 	 public String validate(@ModelAttribute("users") User login, Model model) { 
 		 Boolean valid = userService.validateLogin(login.getEmail(),login.getPassword()); //verifies both the email and password are valid 
+		 
 		 if(valid == true) 
 		 { 
 			 User user = userService.getUserInfo(login.getEmail());
@@ -101,12 +104,26 @@ public class ControllerSOAP {
 	@RequestMapping("/displaySummary")
 	public String displaySummary(Model m, @ModelAttribute("user") User login, 
 			@ModelAttribute("financial") Financial f) {
+				
+		System.out.println("*** displaySummary login: " + login);
+		
+		List<User> check = userService.getUserInfoList(login.getEmail());
+		if (check.isEmpty() ) {
+			//Boolean error = true; //triggers the invalid error message
+			String invalidUser = login.getEmail() + " is not in the database. Please click Create Account";
+			//m.addAttribute("error", error);
+			m.addAttribute("invalidUser", invalidUser);
+			return "redirect:/";
+		}
 		
 		if(modelAttribute == false) {//so that returning to displaySummary from displayTransactions does not cause an error
 			userTemp = userService.getUserInfo(login.getEmail()); // gets user based on the email they entered on landingPage
 		}
+		
 		User pass = userService.getUserInfo(login.getEmail());
 		userTemp = pass;
+	
+		
 		//to pass user information to other pages
 		User user = new User();
 		
@@ -132,8 +149,8 @@ public class ControllerSOAP {
 		m.addAttribute("spending", spending);
 		m.addAttribute("financial", f);
 		
-		
 		return "displaySummary";
+
 	}
 	// ####### CLAYTON !!!!!!!!!! LOOK HERE #######
 	// AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
@@ -143,8 +160,11 @@ public class ControllerSOAP {
 	@RequestMapping("/displayTransactions")
 	public String displayTransactions(Model model) {
 		
-		List<Financial> income = moneyService.getIncomesOneTime(userTemp.getUser_id());
-		List<Financial> outcome = moneyService.getOutcomesOneTime(userTemp.getUser_id());
+		//List<Financial> income = moneyService.getIncomesOneTime(userTemp.getUser_id());
+		//List<Financial> outcome = moneyService.getOutcomesOneTime(userTemp.getUser_id());
+		
+		List<Financial> income = moneyService.getIncomes(userTemp.getUser_id());
+		List<Financial> outcome = moneyService.getOutcomes(userTemp.getUser_id());
 		
 		model.addAttribute("user", userTemp);
 		model.addAttribute("income", income); 
@@ -215,7 +235,7 @@ public class ControllerSOAP {
 		financial.setEntry_date(date);
 		moneyService.saveFinances(financial);
 		
-		r.addFlashAttribute("user",user);
+		//r.addFlashAttribute("user",user);
 		
 		System.out.println("*** processUser callingMap: " + callingMap);
 		
@@ -224,6 +244,8 @@ public class ControllerSOAP {
 			return "redirect:/populateFinances";
 		} else {
 			System.out.println("*** processUser redirecting to /displaySummary");
+			//r.addFlashAttribute(financial);
+			r.addFlashAttribute("user",user);
 			return "redirect:/displaySummary";
 		}
 	}

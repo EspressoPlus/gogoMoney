@@ -51,17 +51,19 @@ window.onload = function() {
 var chart = new CanvasJS.Chart("chartContainer", {
 	animationEnabled: true,
 	theme: "light2",
+	backgroundColor: "transparent",
 	title: {
-		text: "$ $ $ Spending Summary $ $ $"
+		text: "Spending Summary"
 	},
 	subtitles: [{
-		text: "- - -"
+		text: "$$$"
 	}],
 	data: [{
 		type: "doughnut",
-		yValueFormatString: "$#,##0.00",
+		yValueFormatString: "$#,##0",
 		indexLabel: "{category}: {y}",
 		toolTipContent: "{y}",
+		indexLabelFontSize: 14,
 		dataPoints : <%out.print(dataPoints);%>
 	}]
 });
@@ -135,15 +137,21 @@ p {
 	</p>
 	<br>
 
-	<form:form action="processUser/${user.user_id}"
-		modelAttribute="financial" method="post">
-		<p>Enter a new small transaction:</p>
+	<!-- https://canvasjs.com/jsp-charts/doughnut-chart/ -->
+	<!-- <div id="chartContainer" style="height: 370px; width: 50%;"></div> -->
+	<div id="chartContainer" style="height: 370px; width: 50%; margin:0 auto;"></div>
+	<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+
+
+	<form:form action="processUser/${user.user_id}" modelAttribute="financial" method="post">
+	<p>Enter a new small transaction:</p>
 		<table>
 			<tr>
 				<th>Amount $:</th>
 				<th>Name</th>
 				<th>Category</th>
 				<th>Income or Expense?</th>
+				<th>Transaction Date</th>
 			</tr>
 			<tr>
 				<td><form:input path="amount" /></td>
@@ -154,15 +162,18 @@ p {
 				<td><form:select path="income_outcome">
 						<form:options items="${inOrOutList}" />
 					</form:select></td>
-				<td><input type="hidden" name="callingMap"
-					value="displaySummary"> <input type="submit"
-					value="Submit and Add Another" /></td>
+				<td><form:input path="transaction_date" type="date" pattern="yyyy-MM-dd" /></td>
+				<td><form:hidden path="recur_interval" value="Once"/></td>
+				<td><form:hidden path="recurring" value="FALSE"/></td>			
 			</tr>
 		</table>
-
-
-
+	<br>
+	
+	<input type="hidden" name="callingMap" value="displaySummary">
+	<input type="submit" value="Submit and Add Another" />
 	</form:form>
+	
+
 
 
 
@@ -226,25 +237,11 @@ p {
 	<br>
 	<br>
 	<br>
-	<div>
-		Why not just send $ {pass} as value, instead of separate attributes? <br>
-		${pass}
-		<%-- <form:form action="/gogoMoney/displayTransactions" modelAttribute="user" method="post"> --%>
-		<form:form action="displayTransactions" modelAttribute="user"
-			method="post">
-			<input type="hidden" name="user" value="${pass}">
-			<input type="submit" value="Transaction History">
-		</form:form>
-	</div>
-
-
-
+	
 	
 	<br><br><br>
 	
-	<!-- https://canvasjs.com/jsp-charts/doughnut-chart/ -->
-	<div id="chartContainer" style="height: 370px; width: 100%;"></div>
-	<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+
 
  	
 	<br><br><br>
@@ -289,7 +286,7 @@ p {
 
 
 		<div>
-			Why not just send $ {pass} as value, instead of separate attributes?
+			Clayton's note: Why not just send $ {pass} as value, instead of separate attributes?
 			<br>
 			${pass}
 			<%-- <form:form action="/gogoMoney/displayTransactions" modelAttribute="user" method="post"> --%>

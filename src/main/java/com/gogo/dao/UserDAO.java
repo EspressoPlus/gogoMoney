@@ -21,6 +21,8 @@ public interface UserDAO {
 	
 	public List<User> getEmail(String email, String password);
 	
-	public User getUserInfo(String email); 
+	public User getUserInfo(String email);
+
+	public List<User> getUserInfoList(String email);
 
 }

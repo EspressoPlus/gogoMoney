@@ -25,7 +25,8 @@ public class MoneyDAOImpl implements MoneyDAO {
 	@Override
 	public List<Financial> getIncomes(int user_id) {
 		Session session = sessionFactory.getCurrentSession();
-		Query<Financial> query = session.createQuery("From Financial where user_id = :user_id AND income_outcome = :income", Financial.class);
+		Query<Financial> query = session.createQuery(
+				"From Financial where user_id = :user_id AND income_outcome = :income order by transaction_date desc", Financial.class);
 		query.setParameter("user_id", user_id);
 		query.setParameter("income", "income");
 		
@@ -35,7 +36,8 @@ public class MoneyDAOImpl implements MoneyDAO {
 	@Override
 	public List<Financial> getOutcomes(int user_id) {
 		Session session = sessionFactory.getCurrentSession();
-		Query<Financial> query = session.createQuery("From Financial where user_id = :user_id AND income_outcome = :outcome", Financial.class);
+		Query<Financial> query = session.createQuery(
+				"From Financial where user_id = :user_id AND income_outcome = :outcome order by transaction_date desc", Financial.class);
 		query.setParameter("user_id", user_id);
 		query.setParameter("outcome", "outcome");
 		
@@ -50,6 +52,20 @@ public class MoneyDAOImpl implements MoneyDAO {
 		
 		return query.getResultList();
 	}
+	
+	@Override
+	public List<Financial> getFinancesCurrent(int user_id) {
+		Session session = sessionFactory.getCurrentSession();
+		Query<Financial> query = session.createQuery(
+				"From Financial where user_id = :user_id and ( recurring = 'TRUE' or income_outcome = 'Income' ) ", 
+				Financial.class);
+		query.setParameter("user_id", user_id);
+		
+		return query.getResultList();
+	}
+	
+	//Query<Financial> query = session.createQuery("From Financial where user_id = :user_id and recurring = 'TRUE'", Financial.class);
+	
 	
 	@Override
 	public Financial getFinance(int id) {
