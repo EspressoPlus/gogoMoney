@@ -76,17 +76,13 @@ chart.render();
 
 <title>Home</title>
 <style>
-h1 {
-	border: 2px solid green;
-	border-radius: 8px;
-	padding: 50px;
-	width: 1000px;
-	height: 50px;
+#banner {
+	
+	padding: 10px;
+	width: 800px;
+	height: 220px;
 	margin-left: auto;
 	margin-right: auto;
-	text-align: center;
-	font-size: 200%;
-	background: #89DE5C;
 }
 
 body {
@@ -102,6 +98,16 @@ table {
 }
 #buttons{
 	text-align: center;
+	background-color: #D9F5CA;
+}
+#buttonBack{
+	background-color: #D9F5CA;
+}
+#buttonT{
+	background-color: #D9F5CA;
+}
+#buttonF{
+	background-color: #D9F5CA;
 }
 
 #gogoAmount {
@@ -115,8 +121,11 @@ table {
 	text-align: center;
 	font-size: 200%;
 }
+h1{
+	text-align:center;
+}
 
-p {
+h2 {
 	font-size: 150%;
 }
 </style>
@@ -126,25 +135,26 @@ p {
 </head>
 <body>
 	
+	<div id="banner"><img src='${pageContext.request.contextPath}/images/gogoLogoLong.jpg' style="width: 800px; height: 220px;"></div>
+	<%-- <h1>Welcome ${pass.user_first_name}!</h1>--%>
 
-	<h1>Welcome ${pass.user_first_name}!</h1>
 
-
-	<p>Your remaining GoGo Money is:
+	<h1>Your remaining GoGo Money is:</h1>
 	<p>
 	<p id="gogoAmount">
 		<fmt:formatNumber value="${surplus}" type="currency" />
 	</p>
-	<br>
+	<br><br><br>
 
 	<!-- https://canvasjs.com/jsp-charts/doughnut-chart/ -->
 	<!-- <div id="chartContainer" style="height: 370px; width: 50%;"></div> -->
 	<div id="chartContainer" style="height: 370px; width: 50%; margin:0 auto;"></div>
 	<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 
+	<br><br><br>
 
 	<form:form action="processUser/${user.user_id}" modelAttribute="financial" method="post">
-	<p>Enter a new small transaction:</p>
+	<h2>Enter a new small transaction:</h2>
 		<table>
 			<tr>
 				<th>Amount $:</th>
@@ -169,11 +179,8 @@ p {
 		</table>
 	<br>
 	
-	<input type="hidden" name="callingMap" value="displaySummary">
-	<input type="submit" value="Submit and Add Another" />
-	</form:form>
 	
-
+	</form:form>
 
 
 
@@ -181,7 +188,7 @@ p {
 
 	<table>
 		<tr>
-			<td>
+			<td id="buttonT">
 				<%-- <form> --%>
 				<div>
 					<%-- <form:form action="/gogoMoney/displayTransactions" modelAttribute="user" method="post"> --%>
@@ -203,7 +210,7 @@ p {
 				</div>
 			</td>
 
-			<td>
+			<td id="buttonF">
 				<div>
 					<%-- <form:form action="/gogoMoney/populateFinances" modelAttribute="user" method="post"> --%>
 					<form:form action="populateFinances" modelAttribute="user"
@@ -232,6 +239,8 @@ p {
 					</form:form>
 				</div>
 			</td>
+			<td id="buttonBack"><input type="hidden" name="callingMap" value="displaySummary">
+				<input type="submit" value="Submit and Add Another" /></td>
 		</tr>
 	</table>
 	<br>
@@ -246,67 +255,6 @@ p {
  	
 	<br><br><br>
 
-		<div>
-			<%-- <form:form action="/gogoMoney/displayTransactions" modelAttribute="user" method="post"> --%>
-			<form:form action="displayTransactions" modelAttribute="user" method="post">
-				<input type="hidden" name="user_id" value="${pass.user_id}">
-				<input type="hidden" name="user_first_name" value="${pass.user_first_name}">
-				<input type="hidden" name="user_last_name" value="${pass.user_last_name}">
-				<input type="hidden" name="email" value="${pass.email}">
-				<input type="hidden" name="password" value="${pass.password}">
-				<input type="hidden" name="start_balance" value="${pass.start_balance}">
-				<input type="hidden" name="amount_to_save" value="${pass.amount_to_save}">
-				<input type="submit" value="Transaction History">
-			</form:form>
-		</div>
-		<br>
-		<div>
-			<%-- <form:form action="/gogoMoney/populateFinances" modelAttribute="user" method="post"> --%>
-			<form:form action="populateFinances" modelAttribute="user" method="post">
-				<input type="hidden" name="user_id" value="${pass.user_id}">
-				<input type="hidden" name="user_first_name" value="${pass.user_first_name}">
-				<input type="hidden" name="user_last_name" value="${pass.user_last_name}">
-				<input type="hidden" name="email" value="${pass.email}">
-				<input type="hidden" name="password" value="${pass.password}">
-				<input type="hidden" name="start_balance" value="${pass.start_balance}">
-				<input type="hidden" name="amount_to_save" value="${pass.amount_to_save}">
-				<input type="submit" value="Finances">
-			</form:form>
-		</div>
-		<br>
-		<div>
-			<%-- <form:form action="/gogoMoney" modelAttribute="user" method="post"> --%>
-			<form:form action="/gogo" modelAttribute="user" method="post">
-				<input type="submit" value="Login/Logout">
-			</form:form>
-		</div>
-		<br><br><br>
-
-
-
-
-		<div>
-			Clayton's note: Why not just send $ {pass} as value, instead of separate attributes?
-			<br>
-			${pass}
-			<%-- <form:form action="/gogoMoney/displayTransactions" modelAttribute="user" method="post"> --%>
-			<form:form action="displayTransactions" modelAttribute="user" method="post">
-				<input type="hidden" name="user" value="${pass}">
-				<input type="submit" value="Transaction History">
-			</form:form>
-		</div>
-		
-	
-	<%-- user:<br><%= userS %><br> --%>
-	<%-- <%= userScriptlet.toString() %><br> --%>
-	<%-- email: <%= userS.getEmail() %><br> --%>
-	<%-- user id: <%= userS.getUser_id() %><br> --%>
-	<%-- <%= userScriptlet.getEmail() %><br>  --%>
-	<%-- spending: <%= spendS.getClass() %><br> --%>
-	<%-- spending: <%= spendS %> --%>
-	
-	<br><br><br><br>
-	
 		
 
 </body>
