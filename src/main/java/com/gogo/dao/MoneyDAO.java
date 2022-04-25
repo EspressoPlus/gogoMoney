@@ -14,6 +14,8 @@ public interface MoneyDAO {
 	
 	public List<Financial> getFinances(int user_id);
 	
+	public List<Financial> getFinancesCurrent(int user_id);
+	
 	public Financial getFinance(int id);
 	
 	public Financial getIncome(int id);

@@ -20,5 +20,7 @@ public interface UserService {
 	
 	public User getUserInfo(String email);
 
-	public void createUser(User user); 
+	public void createUser(User user);
+
+	public List<User> getUserInfoList(String email); 
 }

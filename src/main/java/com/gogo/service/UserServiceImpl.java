@@ -60,11 +60,22 @@ public class UserServiceImpl implements UserService {
 	
 	@Override
 	@Transactional
-	public User getUserInfo(String email) 
+	public User getUserInfo(String email)
+	//public List<User> getUserInfo(String email)
 	{
 		System.out.println("********* UserServiceImpl email: " + email);
 		return userDAO.getUserInfo(email);
 	}
+	
+	@Override
+	@Transactional
+	public List<User> getUserInfoList(String email)
+	//public List<User> getUserInfo(String email)
+	{
+		System.out.println("********* UserServiceImpl email: " + email);
+		return userDAO.getUserInfoList(email);
+	}
+	
 
 	@Override
 	@Transactional

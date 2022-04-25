@@ -57,6 +57,10 @@ public class User {
 		this.amount_to_save = amount_to_save;
 	}
 	
+	public int getUser_id_bypass_db(){
+		return user_id;
+	}
+	
 	public int getUser_id() {
 		return user_id;
 	}

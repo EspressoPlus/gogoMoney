@@ -90,7 +90,10 @@ input[type=submit], select {
 
 	<form method="post" action="displaySummary">
 		<c:set var="error" value="${error}"></c:set>
+		<c:set var="errMsg" value="${errMsg}"></c:set>
 		<h2>Login to Access Your GoGo Account</h2>
+		
+		
 		<table>
 
 			<tr>
@@ -110,6 +113,16 @@ input[type=submit], select {
 					</tr>
 				</c:when>
 			</c:choose>
+			
+			<c:choose>
+				<c:when test="${!empty errMsg}">
+					<tr>
+						<td></td>
+						<td style="color: red;">Invalid Email or Password</td>
+					</tr>
+				</c:when>
+			</c:choose>
+			
 			<tr>
 				<td></td>
 				<td colspan="2" align="center"><input type="submit"
