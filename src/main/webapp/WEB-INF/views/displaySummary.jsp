@@ -56,14 +56,20 @@ var chart = new CanvasJS.Chart("chartContainer", {
 		text: "Spending Summary"
 	},
 	subtitles: [{
-		text: "$$$"
+		text: ""
 	}],
 	data: [{
 		type: "doughnut",
-		yValueFormatString: "$#,##0",
-		indexLabel: "{category}: {y}",
-		toolTipContent: "{y}",
+		startAngle: 0,
+		indexLabelPlacement: "outside",
 		indexLabelFontSize: 14,
+		innerRadius: "50%",
+		yValueFormatString: "$#,##0",
+		/* indexLabel: "{category}: {y}", */
+		indexLabel: "{category}",
+		toolTipContent: "{y}",
+		indexLabelFontSize: 16,
+		showInLegend: false,		
 		dataPoints : <%out.print(dataPoints);%>
 	}]
 });
@@ -148,7 +154,7 @@ h2 {
 
 	<!-- https://canvasjs.com/jsp-charts/doughnut-chart/ -->
 	<!-- <div id="chartContainer" style="height: 370px; width: 50%;"></div> -->
-	<div id="chartContainer" style="height: 370px; width: 50%; margin:0 auto;"></div>
+	<div id="chartContainer" style="height: 400px; width: 60%; margin:0 auto;"></div>
 	<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 
 	<br><br><br>
