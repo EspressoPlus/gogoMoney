@@ -9,17 +9,14 @@
 <meta charset="ISO-8859-1">
 <title>Login</title>
 <style>
-h1 {
-	border: 2px solid green;
-	border-radius: 8px;
-	padding: 50px;
-	width: 1000px;
-	height: 50px;
+div{
+	padding: 20px;
+	width: 800px;
+	height: 220px;
 	margin-left: auto;
 	margin-right: auto;
-	text-align: center;
-	font-size: 230%;
-	background: #89DE5C;
+	
+	
 }
 
 body {
@@ -83,9 +80,11 @@ input[type=submit], select {
 	cursor: pointer;
 }
 </style>
+
 </head>
 <body>
-	<h1>GoGoMoney</h1>
+	<div><img src='${pageContext.request.contextPath}/images/gogoLogoLong.jpg' style="width: 800px; height: 220px;"></div>
+	
 
 
 	<form method="post" action="displaySummary">
@@ -143,21 +142,7 @@ input[type=submit], select {
 
 	</form>
 
-	<div>
-
-		<br>
-		<br> <a href="${pageContext.request.contextPath}/displaySummary"
-			class="btn btn-primary btn-sm active" role="button"
-			aria-pressed="true">/displaySummary</a> <br>
-		<br> <a
-			href="${pageContext.request.contextPath}/displayTransactions"
-			class="btn btn-primary btn-sm active" role="button"
-			aria-pressed="true">/displayTransactions</a> <br>
-		<br> <a
-			href="${pageContext.request.contextPath}/populateFinances"
-			class="btn btn-primary btn-sm active" role="button"
-			aria-pressed="true">/populateFinances</a>
-	</div>
+	
 
 
 </body>

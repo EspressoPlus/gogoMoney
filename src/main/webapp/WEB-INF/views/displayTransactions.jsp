@@ -25,27 +25,27 @@ body {
 	background-color: #a4f6fd;
 }
 
-h1 {
-	border: 2px solid green;
-	border-radius: 8px;
-	padding: 50px;
-	width: 1000px;
-	height: 50px;
+
+div{
+	padding: 20px;
+	width: 800px;
+	height: 220px;
 	margin-left: auto;
 	margin-right: auto;
-	text-align: center;
-	font-size: 200%;
-	background: #89DE5C;
+	
+	
 }
 
-p {
-	font-size: 200%;
+h2 {
+	text-align:center;
+	font-size: 120%;
+}
+p{
+	font-weight: bold;
 }
 </style>
 <style>
-h2 {
-	text-align: center;
-}
+
 </style>
 <style><%@include file="/resources/css/styleBody.css"%></style>
 <style><%@include file="/resources/css/styleForm.css"%></style>
@@ -53,6 +53,9 @@ h2 {
 
 </head>
 <body>
+<div><img src='${pageContext.request.contextPath}/images/gogoLogoLong.jpg' style="width: 800px; height: 220px;"></div>
+<h1>${user.user_first_name}
+		${user.user_last_name}</h1>
 	<h1>Previous Transaction History</h1>
 	
 	<%-- <form:form action="/gogoMoney/displaySummary" modelAttribute="user" method="post"> --%>
@@ -73,8 +76,7 @@ h2 {
 
 
 
-	<p style="front-size: 200%">${user.user_first_name}
-		${user.user_last_name}</p>
+	
 	<br>
 	<p>If you incorrectly entered in a transaction, delete it here and reenter it on the home page!</p>
 	<h2>Outcome</h2>

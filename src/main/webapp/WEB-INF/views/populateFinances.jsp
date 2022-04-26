@@ -46,17 +46,14 @@ th {
 	background-color: #a4f6fd;
 }
 
-h1 {
-	border: 2px solid green;
-	border-radius: 8px;
-	padding: 50px;
-	width: 1000px;
-	height: 50px;
+div{
+	padding: 20px;
+	width: 800px;
+	height: 220px;
 	margin-left: auto;
 	margin-right: auto;
-	text-align: center;
-	font-size: 200%;
-	background: #89DE5C;
+	
+	
 }
 
 body {
@@ -71,6 +68,7 @@ body {
 <style><%@include file="/resources/css/styleTable.css"%></style>
 </head>
 <body>
+	<div><img src='${pageContext.request.contextPath}/images/gogoLogoLong.jpg' style="width: 800px; height: 220px;"></div>
 	<h1>Let's populate your Finances, ${user.user_first_name}</h1>
 	<p>Add and delete your recurring finances</p>
 	<%-- <form:form action="/gogoMoney/processUser/${user.user_id}" modelAttribute="financial" method="post"> --%>

@@ -10,17 +10,14 @@
 <meta charset="ISO-8859-1">
 <title>Create Account</title>
 <style>
-h1 {
-	border: 2px solid green;
-	border-radius: 8px;
-	padding: 50px;
-	width: 1000px;
-	height: 50px;
+
+#banner {
+	
+	padding: 10px;
+	width: 800px;
+	height: 220px;
 	margin-left: auto;
 	margin-right: auto;
-	text-align: center;
-	font-size: 200%;
-	background: #89DE5C;
 }
 
 body {
@@ -37,11 +34,13 @@ table.center {
 form {
 	border-radius: 25px;
 	border: 2px solid #73AD21;
-	padding: 20px;
+	padding: 10px;
 	text-align: center;
 	margin-left: auto;
 	margin-right: auto;
 	padding: 100px;
+	background: #AAE888;
+	
 }
 
 h2 {
@@ -52,6 +51,7 @@ h2 {
 td {
 	font-family: Arial;
 	text-align: center;
+	
 }
 
 input[type=text], select {
@@ -88,13 +88,14 @@ input[type=submit], select {
 </style>
 </head>
 <body>
-	<h1>GoGoMoney</h1>
-	<h2 style="color: black">Create your account!</h2>
+	<div id="banner"><img src='${pageContext.request.contextPath}/images/gogoLogoLong.jpg' style="width: 800px; height: 220px;"></div>
+	
 	<form:form action="processAccount" modelAttribute="user" method="post">
-
+		<h2 style="color: black">Create your account!</h2>
+		<br>
 		<table class=center>
 			<tr>
-				<td><img src='${pageContext.request.contextPath}/images/GoGoMoney-logos.jpeg' style="width: 300px; height: 300px;"></td>
+				<td><img src='${pageContext.request.contextPath}/images/money%20logo%202.PNG' style="width: 300px; height: 300px;"></td>
 				<td><table>
 						<tr>
 							<td style="font-family: verdana" ;style="color:white"><b>Enter
@@ -146,7 +147,7 @@ input[type=submit], select {
 
 	</form:form>
 	
-	${pageContext.request.contextPath}
+	
 	
 </body>
 </html>
