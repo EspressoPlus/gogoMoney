@@ -114,26 +114,24 @@ public class MoneyServiceImpl implements MoneyService {
 		//only adds recurring amounts
 		for(int j = 0; j < income.size();j++)
 		{
-			if(income.get(j).getTransaction_date().after(date))
-			{
+			
 				if(income.get(j).getRecurring().equals("TRUE"))
 				{
 					inMonth = inMonth + income.get(j).getAmount();
 				}
 			}
-		}
+		
 		
 		//only adds recurring amounts
 		for(int j = 0; j < outcome.size();j++)
 		{
-			if(outcome.get(j).getTransaction_date().after(date))
-			{
+			
 				if(outcome.get(j).getRecurring().equals("TRUE"))
 				{
 					outMonth = outMonth + outcome.get(j).getAmount();
-				}
+				}//
 			}
-		}
+		
 		
 		//total surplus
 		Double total = inMonth - outMonth;

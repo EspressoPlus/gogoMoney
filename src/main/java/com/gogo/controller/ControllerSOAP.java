@@ -207,7 +207,7 @@ public class ControllerSOAP {
 		m.addAttribute("financial", financial);
 		m.addAttribute("current", current);
 		m.addAttribute("surplus", surplus);
-		if(surplus == 0.0)
+		if(surplus <= 0.0)
 		{
 			String noSurplus = "No Surplus Available";
 			m.addAttribute("time", noSurplus);
