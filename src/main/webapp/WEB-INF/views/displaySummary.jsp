@@ -56,14 +56,20 @@ var chart = new CanvasJS.Chart("chartContainer", {
 		text: "Spending Summary"
 	},
 	subtitles: [{
-		text: "$$$"
+		text: ""
 	}],
 	data: [{
 		type: "doughnut",
-		yValueFormatString: "$#,##0",
-		indexLabel: "{category}: {y}",
-		toolTipContent: "{y}",
+		startAngle: 0,
+		indexLabelPlacement: "outside",
 		indexLabelFontSize: 14,
+		innerRadius: "50%",
+		yValueFormatString: "$#,##0",
+		/* indexLabel: "{category}: {y}", */
+		indexLabel: "{category}",
+		toolTipContent: "{y}",
+		indexLabelFontSize: 16,
+		showInLegend: false,		
 		dataPoints : <%out.print(dataPoints);%>
 	}]
 });
@@ -148,12 +154,12 @@ h2 {
 
 	<!-- https://canvasjs.com/jsp-charts/doughnut-chart/ -->
 	<!-- <div id="chartContainer" style="height: 370px; width: 50%;"></div> -->
-	<div id="chartContainer" style="height: 370px; width: 50%; margin:0 auto;"></div>
+	<div id="chartContainer" style="height: 400px; width: 60%; margin:0 auto;"></div>
 	<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 
 	<br><br><br>
 
-	<form:form action="processUser/${user.user_id}" modelAttribute="financial" method="post">
+	<form:form id="add-one-time-tx" action="processUser/${user.user_id}" modelAttribute="financial" method="post">
 	<h2>Enter a new small transaction:</h2>
 		<table>
 			<tr>
@@ -177,12 +183,7 @@ h2 {
 				<td><form:hidden path="recurring" value="FALSE"/></td>			
 			</tr>
 		</table>
-	<br>
-	
-	
 	</form:form>
-
-
 
 	<br>
 
@@ -239,8 +240,12 @@ h2 {
 					</form:form>
 				</div>
 			</td>
-			<td id="buttonBack"><input type="hidden" name="callingMap" value="displaySummary">
-				<input type="submit" value="Submit and Add Another" /></td>
+			<td id="buttonBack">
+				<input type="hidden" name="callingMap" value="displaySummary">
+				<!-- <input type="submit" value="Submit and Add Another" /> -->
+				<!-- https://stackoverflow.com/questions/7020659/submit-form-using-a-button-outside-the-form-tag/65516469#65516469 -->
+				<input type="submit" form="add-one-time-tx" value="Submit and Add Another" />
+			</td>
 		</tr>
 	</table>
 	<br>
