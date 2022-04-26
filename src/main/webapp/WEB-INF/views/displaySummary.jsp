@@ -153,7 +153,7 @@ h2 {
 
 	<br><br><br>
 
-	<form:form action="processUser/${user.user_id}" modelAttribute="financial" method="post">
+	<form:form id="add-one-time-tx" action="processUser/${user.user_id}" modelAttribute="financial" method="post">
 	<h2>Enter a new small transaction:</h2>
 		<table>
 			<tr>
@@ -177,12 +177,7 @@ h2 {
 				<td><form:hidden path="recurring" value="FALSE"/></td>			
 			</tr>
 		</table>
-	<br>
-	
-	
 	</form:form>
-
-
 
 	<br>
 
@@ -239,8 +234,12 @@ h2 {
 					</form:form>
 				</div>
 			</td>
-			<td id="buttonBack"><input type="hidden" name="callingMap" value="displaySummary">
-				<input type="submit" value="Submit and Add Another" /></td>
+			<td id="buttonBack">
+				<input type="hidden" name="callingMap" value="displaySummary">
+				<!-- <input type="submit" value="Submit and Add Another" /> -->
+				<!-- https://stackoverflow.com/questions/7020659/submit-form-using-a-button-outside-the-form-tag/65516469#65516469 -->
+				<input type="submit" form="add-one-time-tx" value="Submit and Add Another" />
+			</td>
 		</tr>
 	</table>
 	<br>
