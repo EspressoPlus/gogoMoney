@@ -7,7 +7,12 @@ Trello Pages:
 * https://trello.com/b/Y39fG2ww/connect-jsp-pages
 
 This system will:
-* bullets here 
+* reconcile user credentials
+* allow user add income and financial details
+* set financial target/goal
+* document metadata for expenses
+* estimate time to achieve target
+* show financial status in pie chart
 
 Plan to employ the following:
 * entity class design
