@@ -1,6 +1,6 @@
 # gogoMoney
 
-This is the gogoMoney web database ...
+This is the gogoMoney web database.
 
 Trello Pages:
 * https://trello.com/b/5BNUB7NC/gogomoney
